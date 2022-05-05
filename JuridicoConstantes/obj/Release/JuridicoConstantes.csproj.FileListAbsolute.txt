@@ -1,0 +1,10 @@
+C:\Proyectos\Extra\Proyecto\Proyecto\JuridicoConstantes\bin\Release\JuridicoConstantes.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\JuridicoConstantes\bin\Release\JuridicoConstantes.pdb
+C:\Proyectos\Extra\Proyecto\Proyecto\JuridicoConstantes\obj\Release\JuridicoConstantes.csprojResolveAssemblyReference.cache
+C:\Proyectos\Extra\Proyecto\Proyecto\JuridicoConstantes\obj\Release\JuridicoConstantes.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\JuridicoConstantes\obj\Release\JuridicoConstantes.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\bin\Release\JuridicoConstantes.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\bin\Release\JuridicoConstantes.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\obj\Release\JuridicoConstantes.csprojResolveAssemblyReference.cache
+C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\obj\Release\JuridicoConstantes.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\obj\Release\JuridicoConstantes.pdb

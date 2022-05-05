@@ -1,0 +1,232 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Session["appTitle"]</title><%--Administrador De Servicios Juridicos SODIMAC</title>--%>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+    <meta name="developer" content="HRSG, Allware Solutions, apr-2015, v1.0.0" />
+    <script type="text/javascript" src="../Scripts/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="~/css/jquery-ui.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/css/jquery-ui.theme.min.css" />
+    <link rel="shortcut icon" href="~/Images/favicon.ico" />
+    <script type="text/javascript">
+        function validarPlantilla(message) {
+
+            $(function () {
+
+                $('#lblMessage').html(message);
+                $("#dialog-confirm").css('visibility', 'visible');
+
+                $("#dialog-confirm").dialog({
+                    resizable: false,
+                    height: 260,
+                    width: 550,
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            });
+        }
+
+
+        function checkMaxLength(field, maxlimit) {
+            if (field.value.length > maxlimit)
+                field.value = field.value.substring(0, maxlimit);
+        }
+
+    </script>
+
+    <style type="text/css">
+        .title {
+            font-family: Arial;
+            font-size: large;
+            font-weight: 500;
+            margin: 10px 10px 10px 10px;
+        }
+
+        .rightButton {
+            float: right;
+            right: 0px;
+            width: 100px;
+        }
+
+        .textboxGeneral {
+            border: solid !important;
+            border-color: black !important;
+            border-width: 1px !important;
+        }
+
+        .infoLabel {
+            color: GrayText;
+            float: right;
+        }
+
+        .rightInfoLabel {
+            color: GrayText;
+            float: right;
+            left: 0px;
+        }
+
+        .Button {
+            color: rgb(0, 0, 0);
+            font-size: 13px;
+            padding: 5px;
+            text-shadow: 0px -1px 0px rgba(30, 30, 30, 0.8);
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            /*background: rgb(4, 119, 52);
+            background: -moz-linear-gradient(90deg, rgb(4, 119, 52) 100%, rgb(4, 119, 52) 70%);
+            background: -webkit-linear-gradient(90deg, rgb(4, 119, 52) 100%, rgb(4, 119, 52) 70%);
+            background: -o-linear-gradient(90deg, rgb(4, 119, 52) 100%, rgb(4, 119, 52) 70%);
+            background: -ms-linear-gradient(90deg, rgb(4, 119, 52) 100%, rgb(4, 119, 52) 70%);
+            background: linear-gradient(0deg, rgb(4, 119, 52) 100%, rgb(4, 119, 52) 70%);*/
+            background: #B6BF00;
+
+            -webkit-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
+            -moz-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
+            box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
+            width: 120px;
+            
+        }
+
+        .loginTextbox {
+            border-left: 0px solid darkred;
+            border-right: 0px solid darkred;
+            border-top: 0px solid darkred;
+            border-bottom: 1px solid darkred;
+            background-color: transparent;
+            outline: 0;
+            margin-right: 98px;
+        }
+
+        .Initial {
+            display: block;
+            padding: 4px 18px 4px 18px;
+            float: left;
+            background: url("../Images/InitialImage.png") no-repeat right top;
+            color: Black;
+            font-weight: bold;
+        }
+
+        .Initial:hover {
+            color: White;
+            background: url("../images/SelectedButton.png") no-repeat right top;
+        }
+
+        .Clicked {
+            float: left;
+            display: block;
+            background: url("../images/SelectedButton.png") no-repeat right top;
+            padding: 4px 18px 4px 18px;
+            color: Black;
+            font-weight: bold;
+            color: White;
+        }
+
+        .kerning {
+            letter-spacing: -1px;
+        }
+
+        /*#mnuPrincipal { background-color:#4A6892; }*/
+
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server" style="font-family: Arial" enctype="multipart/form-data">
+
+        <div style="width: 100%; align-content: center">
+
+            <table style="width: 100%; align-content: center; align-self: center">
+                <tr>
+                    <td>
+                        
+                        <a href="/Default.aspx">
+                            <img id="imageApp" alt="" border="0" src="~/images/Soriana.png" runat="server" height="43" width="161"  />
+                        </a>
+                    </td>
+                    <td style="align-content: center">
+                        <div>
+                            <a id="text">
+                                <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="18px" Text="" CssClass="kerning"></asp:Label>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <asp:Label ID="labelNombre" runat="server" Font-Size="14px" CssClass="kerning"></asp:Label>
+                        <asp:Label ID="lblPerfil" runat="server" Font-Size="14px" CssClass="kerning"></asp:Label>
+                        <br />
+                        <asp:LinkButton ID="btnCerrarSesion" runat="server" Text="Cerrar Sesión" Font-Size="14px" OnClick="btnCerrarSesion_Click" />
+                    </td>
+                    <%--<td>
+                            <img id="Img1" alt="" border="0" src="~/images/Soriana.png" runat="server" style="height: 50px; width: 190px" />
+                        
+                    </td>--%>
+                </tr>
+            </table>
+
+            <table style="width: 100%">
+               <tr>
+                  <td style="width: 100%; background-color:#D52B1E; max-height: 23px; height: 23px;">
+                    
+                        <asp:Menu ID="mnuPrincipal"
+                            runat="server"
+                            BackColor="#D52B1E"
+                            DynamicHorizontalOffset="2"
+                            Font-Names="Verdana"
+                            Font-Size="14px"
+                            ForeColor="white"
+                            SkipLinkText=""
+                            StaticSubMenuIndent="12px"
+                            Orientation="Horizontal">
+                            <%--D1D3D7 -- 4A6892--%>
+                            <%--edece6 -- 7E848A--%>
+                            
+                            <DynamicHoverStyle BackColor="#D52B1E" ForeColor="White" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="5px" Font-Names="Arial" />
+                            <DynamicMenuStyle BackColor="#FFFBD6" />
+                            <DynamicSelectedStyle BackColor="#D52B1E" />
+                            <StaticHoverStyle BackColor="#D52B1E" ForeColor="White" />
+                            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <StaticSelectedStyle BackColor="#FFCC66" />
+                            
+                            <%--<DynamicHoverStyle BackColor="#4A6892" ForeColor="White" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="5px" Font-Names="Arial" />
+                            <DynamicMenuStyle BackColor="#7E848A" />
+                            <DynamicSelectedStyle BackColor="#4A6892" />
+                            <StaticHoverStyle BackColor="#4A6892" ForeColor="White" />
+                            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                            <StaticSelectedStyle BackColor="#FFCC66" />--%>
+                        </asp:Menu>
+                   
+                  </td>
+               </tr>
+            </table>
+
+            <asp:ContentPlaceHolder ID="Contenido" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </div>
+    </form>
+
+    <div id="dialog-confirm" title="Alerta" style="visibility: hidden">
+        <p>
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+            <label id="lblMessage"></label>
+        </p>
+    </div>
+
+<%--    <div style="font-size: 11px; color: #000000; text-align: right; font-family: Verdana">/</div> --%>
+<%--    Versión final codigo fuente entregado Apr-16-2015 HRSG --%>
+
+</body>
+</html>

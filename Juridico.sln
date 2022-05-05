@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebJuridico", "WebJuridico", "{BDB5B8CA-FAFC-4571-833F-FC59AF8F2CA1}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebJuridico", "http://localhost:57121", "{126A2B87-163D-41CB-90A1-5199F6E69C0D}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{6c97dc81-788f-40d0-b655-9d2ce9abbbe3}|DACJuridico.dll;{03873004-67f3-443a-80a3-219534568990}|Entidades.dll;{c88a35f7-fee6-4431-90af-cca7fa8fe868}|JuridicoConstantes.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_57129"
+		Debug.AspNetCompiler.PhysicalPath = "WebJuridico\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57129\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_57129"
+		Release.AspNetCompiler.PhysicalPath = "WebJuridico\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57129\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "WebJuridico\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DACJuridico", "DACJuridico\DACJuridico.csproj", "{6C97DC81-788F-40D0-B655-9D2CE9ABBBE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{03873004-67F3-443A-80A3-219534568990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuridicoConstantes", "JuridicoConstantes\JuridicoConstantes.csproj", "{C88A35F7-FEE6-4431-90AF-CCA7FA8FE868}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{126A2B87-163D-41CB-90A1-5199F6E69C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{126A2B87-163D-41CB-90A1-5199F6E69C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{126A2B87-163D-41CB-90A1-5199F6E69C0D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{126A2B87-163D-41CB-90A1-5199F6E69C0D}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{6C97DC81-788F-40D0-B655-9D2CE9ABBBE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C97DC81-788F-40D0-B655-9D2CE9ABBBE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C97DC81-788F-40D0-B655-9D2CE9ABBBE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C97DC81-788F-40D0-B655-9D2CE9ABBBE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03873004-67F3-443A-80A3-219534568990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03873004-67F3-443A-80A3-219534568990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03873004-67F3-443A-80A3-219534568990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03873004-67F3-443A-80A3-219534568990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C88A35F7-FEE6-4431-90AF-CCA7FA8FE868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C88A35F7-FEE6-4431-90AF-CCA7FA8FE868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C88A35F7-FEE6-4431-90AF-CCA7FA8FE868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C88A35F7-FEE6-4431-90AF-CCA7FA8FE868}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{126A2B87-163D-41CB-90A1-5199F6E69C0D} = {BDB5B8CA-FAFC-4571-833F-FC59AF8F2CA1}
+		{6C97DC81-788F-40D0-B655-9D2CE9ABBBE3} = {BDB5B8CA-FAFC-4571-833F-FC59AF8F2CA1}
+		{03873004-67F3-443A-80A3-219534568990} = {BDB5B8CA-FAFC-4571-833F-FC59AF8F2CA1}
+	EndGlobalSection
+EndGlobal

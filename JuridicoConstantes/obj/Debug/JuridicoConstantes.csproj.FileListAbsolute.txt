@@ -1,0 +1,30 @@
+D:\TFS\SORIANA\Juridico\Proyecto\JuridicoConstantes\bin\Debug\JuridicoConstantes.dll
+D:\TFS\SORIANA\Juridico\Proyecto\JuridicoConstantes\bin\Debug\JuridicoConstantes.pdb
+D:\TFS\SORIANA\Juridico\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.csprojResolveAssemblyReference.cache
+D:\TFS\SORIANA\Juridico\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.dll
+D:\TFS\SORIANA\Juridico\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.pdb
+C:\Proyectos\Extra\Proyecto\Proyecto\JuridicoConstantes\bin\Debug\JuridicoConstantes.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\JuridicoConstantes\bin\Debug\JuridicoConstantes.pdb
+C:\Proyectos\Extra\Proyecto\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.pdb
+C:\Proyectos\Extra\Proyecto\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.csprojResolveAssemblyReference.cache
+C:\Proyectos\Extra\Juridico_Final\Proyecto\JuridicoConstantes\bin\Debug\JuridicoConstantes.dll
+C:\Proyectos\Extra\Juridico_Final\Proyecto\JuridicoConstantes\bin\Debug\JuridicoConstantes.pdb
+C:\Proyectos\Extra\Juridico_Final\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.csprojResolveAssemblyReference.cache
+C:\Proyectos\Extra\Juridico_Final\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.dll
+C:\Proyectos\Extra\Juridico_Final\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.pdb
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\JuridicoConstantes\bin\Debug\JuridicoConstantes.dll
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\JuridicoConstantes\bin\Debug\JuridicoConstantes.pdb
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.csprojResolveAssemblyReference.cache
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.dll
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.pdb
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\JuridicoConstantes\bin\Debug\JuridicoConstantes.dll
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\JuridicoConstantes\bin\Debug\JuridicoConstantes.pdb
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.csproj.CoreCompileInputs.cache
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.dll
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\JuridicoConstantes\obj\Debug\JuridicoConstantes.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\bin\Debug\JuridicoConstantes.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\bin\Debug\JuridicoConstantes.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\obj\Debug\JuridicoConstantes.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\obj\Debug\JuridicoConstantes.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\obj\Debug\JuridicoConstantes.csprojResolveAssemblyReference.cache

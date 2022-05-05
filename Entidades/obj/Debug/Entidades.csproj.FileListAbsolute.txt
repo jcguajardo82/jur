@@ -1,0 +1,29 @@
+D:\TFS\SORIANA\Juridico\Proyecto\Entidades\bin\Debug\Entidades.dll
+D:\TFS\SORIANA\Juridico\Proyecto\Entidades\bin\Debug\Entidades.pdb
+D:\TFS\SORIANA\Juridico\Proyecto\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+D:\TFS\SORIANA\Juridico\Proyecto\Entidades\obj\Debug\Entidades.dll
+D:\TFS\SORIANA\Juridico\Proyecto\Entidades\obj\Debug\Entidades.pdb
+C:\Proyectos\Extra\Proyecto\Proyecto\Entidades\bin\Debug\Entidades.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\Entidades\bin\Debug\Entidades.pdb
+C:\Proyectos\Extra\Proyecto\Proyecto\Entidades\obj\Debug\Entidades.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\Entidades\obj\Debug\Entidades.pdb
+C:\Proyectos\Extra\Juridico_Final\Proyecto\Entidades\bin\Debug\Entidades.dll
+C:\Proyectos\Extra\Juridico_Final\Proyecto\Entidades\bin\Debug\Entidades.pdb
+C:\Proyectos\Extra\Juridico_Final\Proyecto\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+C:\Proyectos\Extra\Juridico_Final\Proyecto\Entidades\obj\Debug\Entidades.dll
+C:\Proyectos\Extra\Juridico_Final\Proyecto\Entidades\obj\Debug\Entidades.pdb
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\Entidades\bin\Debug\Entidades.dll
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\Entidades\bin\Debug\Entidades.pdb
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\Entidades\obj\Debug\Entidades.dll
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\Entidades\obj\Debug\Entidades.pdb
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\Entidades\bin\Debug\Entidades.dll
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\Entidades\bin\Debug\Entidades.pdb
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\Entidades\obj\Debug\Entidades.dll
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\Entidades\obj\Debug\Entidades.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\bin\Debug\Entidades.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\bin\Debug\Entidades.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Debug\Entidades.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Debug\Entidades.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache

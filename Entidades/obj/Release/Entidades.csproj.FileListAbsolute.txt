@@ -1,0 +1,9 @@
+C:\Proyectos\Extra\Proyecto\Proyecto\Entidades\bin\Release\Entidades.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\Entidades\bin\Release\Entidades.pdb
+C:\Proyectos\Extra\Proyecto\Proyecto\Entidades\obj\Release\Entidades.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\Entidades\obj\Release\Entidades.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\bin\Release\Entidades.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\bin\Release\Entidades.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Release\Entidades.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Release\Entidades.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache

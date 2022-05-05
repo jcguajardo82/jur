@@ -1,0 +1,106 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font: 11px Tahoma;
+}
+
+h1 {
+    font: bold 32px Times;
+    color: #666;
+    text-align: center;
+    padding: 20px 0;
+}
+
+#container {
+    width: 700px;
+    margin: 10px auto;
+}
+
+.mGrid {
+    /*width: 100%;
+    background-color: #fff;
+    margin: 5px 0 10px 0;
+    border: solid 1px #525252;
+    border-collapse: collapse;*/
+
+    color:#339933;font-size:13px;width:650px;border-collapse:collapse;
+
+}
+
+    .mGrid td {
+        padding: 2px;
+        border: solid 1px #c1c1c1;
+        color: #717171;
+    }
+
+    .mGrid th {
+        /*padding: 4px 2px;
+        color: #fff;
+        background: #424242 url(grd_head.png) repeat-x top;
+        border-left: solid 1px #525252;
+        font-size: 0.9em;*/
+    }
+
+    
+    .mGrid tr {
+        color:Black;background-color:#DD4433;font-weight:bold;
+    }
+
+    /*.mGrid .alt {
+        background: #fcfcfc url(grd_alt.png) repeat-x top;
+    }
+
+    .mGrid .pgr {
+        background: #424242 url(grd_pgr.png) repeat-x top;
+    }*/
+
+        .mGrid .pgr table {
+            /*margin: 5px 0;*/
+            color:#333333;
+            font-size:13px;
+            width:650px;
+            border-collapse:collapse;
+        }
+
+        .mGrid .pgr tr {
+            color:Black;
+            background-color:#DD4433;
+            font-weight:bold;
+        }
+
+        .mGrid .pgr td {
+            /*border-width: 0;
+            padding: 0 6px;
+            border-left: solid 1px #666;
+            font-weight: bold;
+            color: #fff;
+            line-height: 12px;*/
+        }
+
+        .mGrid .pgr a {
+            color: black;
+            /*text-decoration: none;*/
+        }
+
+            /*.mGrid .pgr a:hover {
+                color: #000;
+                text-decoration: none;
+            }*/
+
+
+
+div.AspNet-Menu-Horizontal {  height: 30px; width: 1050px;  margin-top: 25px;  position: relative;  color: #D1D3D7; border-color: #D7D7D7; }
+div.AspNet-Menu-Horizontal ul.AspNet-Menu { margin: 0px 0px 0px -40px; padding: 0px 0px 0px 40px; }
+div.AspNet-Menu-Horizontal ul.AspNet-Menu li { float: left; margin: 0; padding: 0px; list-style: none; width: 175px; text-align: center; }
+div.AspNet-Menu-Horizontal ul.AspNet-Menu li:last-child { float: left; margin: 0; padding: 0px; list-style: none; width: 136px; border: none; text-align: center; }
+div.AspNet-Menu-Horizontal ul.AspNet-Menu li img { display: none; }
+div.AspNet-Menu-Horizontal ul li a.AspNet-Menu { padding-left:-20px; display: block; float: left; line-height: 22px; font-weight: normal; text-decoration: none; text-transform: capitalize; text-align: center; color: white; font-size: 12px; width: 175px; font-weight:bold; }
+div.AspNet-Menu-Horizontal ul.AspNet-Menu li a.AspNet-Menu:hover { float: left; color: #666; }
+div.AspNet-Menu-Horizontal ul.AspNet-Menu li.AspNet-Menu-SelectedWithChildren a.AspNet-Menu { float: left; color: #666; } 
+div.AspNet-Menu-Horizontal ul.AspNet-Menu li.AspNet-Menu-SelectedLeaf a.AspNet-Menu { float: left; color: white; }
+div.AspNet-Menu-Horizontal ul.AspNet-Menu li.AspNet-Menu-SelectedLeaf a.AspNet-Menu:hover { float: left; color: #666; }
+div.AspNet-Menu-Horizontal ul li a.AspNet-Menu:hover { background-image: url(images/fondo_menu_active.jpg); background-repeat: repeat-x; color: #666;  }
+        

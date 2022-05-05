@@ -1,0 +1,62 @@
+D:\TFS\SORIANA\Juridico\Proyecto\DACJuridico\obj\Debug\DACJuridico.csprojResolveAssemblyReference.cache
+D:\TFS\SORIANA\Juridico\Proyecto\DACJuridico\obj\Debug\DACJuridico.csproj.ResolveComReference.cache
+D:\TFS\SORIANA\Juridico\Proyecto\DACJuridico\bin\Debug\DACJuridico.dll
+D:\TFS\SORIANA\Juridico\Proyecto\DACJuridico\bin\Debug\DACJuridico.pdb
+D:\TFS\SORIANA\Juridico\Proyecto\DACJuridico\bin\Debug\DocumentFormat.OpenXml.dll
+D:\TFS\SORIANA\Juridico\Proyecto\DACJuridico\bin\Debug\Entidades.dll
+D:\TFS\SORIANA\Juridico\Proyecto\DACJuridico\bin\Debug\Entidades.pdb
+D:\TFS\SORIANA\Juridico\Proyecto\DACJuridico\bin\Debug\DocumentFormat.OpenXml.xml
+D:\TFS\SORIANA\Juridico\Proyecto\DACJuridico\obj\Debug\DACJuridico.dll
+D:\TFS\SORIANA\Juridico\Proyecto\DACJuridico\obj\Debug\DACJuridico.pdb
+C:\Proyectos\Extra\Proyecto\Proyecto\DACJuridico\bin\Debug\DACJuridico.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\DACJuridico\bin\Debug\DACJuridico.pdb
+C:\Proyectos\Extra\Proyecto\Proyecto\DACJuridico\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\DACJuridico\bin\Debug\Entidades.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\DACJuridico\bin\Debug\Entidades.pdb
+C:\Proyectos\Extra\Proyecto\Proyecto\DACJuridico\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Proyectos\Extra\Proyecto\Proyecto\DACJuridico\obj\Debug\DACJuridico.csprojResolveAssemblyReference.cache
+C:\Proyectos\Extra\Proyecto\Proyecto\DACJuridico\obj\Debug\DACJuridico.csproj.ResolveComReference.cache
+C:\Proyectos\Extra\Proyecto\Proyecto\DACJuridico\obj\Debug\DACJuridico.dll
+C:\Proyectos\Extra\Proyecto\Proyecto\DACJuridico\obj\Debug\DACJuridico.pdb
+C:\Proyectos\Extra\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DACJuridico.dll
+C:\Proyectos\Extra\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DACJuridico.pdb
+C:\Proyectos\Extra\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Proyectos\Extra\Juridico_Final\Proyecto\DACJuridico\bin\Debug\Entidades.dll
+C:\Proyectos\Extra\Juridico_Final\Proyecto\DACJuridico\bin\Debug\Entidades.pdb
+C:\Proyectos\Extra\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Proyectos\Extra\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.csprojResolveAssemblyReference.cache
+C:\Proyectos\Extra\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.csproj.ResolveComReference.cache
+C:\Proyectos\Extra\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.dll
+C:\Proyectos\Extra\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.pdb
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DACJuridico.dll
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DACJuridico.pdb
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\DACJuridico\bin\Debug\Entidades.dll
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\DACJuridico\bin\Debug\Entidades.pdb
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.csprojResolveAssemblyReference.cache
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.csproj.ResolveComReference.cache
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.dll
+C:\Users\aws\Documents\Visual Studio 2015\Projects\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.pdb
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DACJuridico.dll
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DACJuridico.pdb
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\bin\Debug\Entidades.dll
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\bin\Debug\Entidades.pdb
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.csprojAssemblyReference.cache
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.csproj.ResolveComReference.cache
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.csproj.CoreCompileInputs.cache
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.csproj.CopyComplete
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.dll
+C:\Users\aws\Documents\ALLWARE\DC\Soriana\V2\Juridico Soriana con mod Catalogos\Juridico_Final\Proyecto\DACJuridico\obj\Debug\DACJuridico.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\bin\Debug\DACJuridico.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\bin\Debug\DACJuridico.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\bin\Debug\Entidades.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\bin\Debug\Entidades.pdb
+C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Debug\DACJuridico.csprojResolveAssemblyReference.cache
+C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Debug\DACJuridico.csproj.ResolveComReference.cache
+C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Debug\DACJuridico.dll
+C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Debug\DACJuridico.pdb
