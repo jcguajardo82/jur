@@ -28,3 +28,9 @@ C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\bin\Debug\Juridico
 C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\obj\Debug\JuridicoConstantes.dll
 C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\obj\Debug\JuridicoConstantes.pdb
 C:\Proyectos\Workspace\extra\Juridico\Code\JuridicoConstantes\obj\Debug\JuridicoConstantes.csprojResolveAssemblyReference.cache
+C:\Proyectos\Juridico\JuridicoConstantes\bin\Debug\JuridicoConstantes.dll
+C:\Proyectos\Juridico\JuridicoConstantes\bin\Debug\JuridicoConstantes.pdb
+C:\Proyectos\Juridico\JuridicoConstantes\obj\Debug\JuridicoConstantes.csprojAssemblyReference.cache
+C:\Proyectos\Juridico\JuridicoConstantes\obj\Debug\JuridicoConstantes.csproj.CoreCompileInputs.cache
+C:\Proyectos\Juridico\JuridicoConstantes\obj\Debug\JuridicoConstantes.dll
+C:\Proyectos\Juridico\JuridicoConstantes\obj\Debug\JuridicoConstantes.pdb

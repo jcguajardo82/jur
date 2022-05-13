@@ -18,3 +18,15 @@ C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Release\DACJuridico.c
 C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Release\DACJuridico.csproj.ResolveComReference.cache
 C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Release\DACJuridico.dll
 C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Release\DACJuridico.pdb
+C:\Proyectos\Juridico\DACJuridico\bin\Release\DACJuridico.dll
+C:\Proyectos\Juridico\DACJuridico\bin\Release\DACJuridico.pdb
+C:\Proyectos\Juridico\DACJuridico\bin\Release\DocumentFormat.OpenXml.dll
+C:\Proyectos\Juridico\DACJuridico\bin\Release\Entidades.dll
+C:\Proyectos\Juridico\DACJuridico\bin\Release\Entidades.pdb
+C:\Proyectos\Juridico\DACJuridico\bin\Release\DocumentFormat.OpenXml.xml
+C:\Proyectos\Juridico\DACJuridico\obj\Release\DACJuridico.csprojAssemblyReference.cache
+C:\Proyectos\Juridico\DACJuridico\obj\Release\DACJuridico.csproj.ResolveComReference.cache
+C:\Proyectos\Juridico\DACJuridico\obj\Release\DACJuridico.csproj.CoreCompileInputs.cache
+C:\Proyectos\Juridico\DACJuridico\obj\Release\DACJuridico.csproj.CopyComplete
+C:\Proyectos\Juridico\DACJuridico\obj\Release\DACJuridico.dll
+C:\Proyectos\Juridico\DACJuridico\obj\Release\DACJuridico.pdb

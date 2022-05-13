@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Session["appTitle"]</title><%--Administrador De Servicios Juridicos SODIMAC</title>--%>
+    <title>Administrador De Servicios Juridicos Corporativos</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
     <meta name="developer" content="HRSG, Allware Solutions, apr-2015, v1.0.0" />
     <script type="text/javascript" src="../Scripts/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="../Scripts/jquery-ui.min.js"></script>
     <link type="text/css" rel="stylesheet" href="~/css/jquery-ui.min.css" />
     <link type="text/css" rel="stylesheet" href="~/css/jquery-ui.theme.min.css" />
-    <link rel="shortcut icon" href="~/Images/favicon.ico" />
+    <link rel="shortcut icon" href="/Images/favicon.ico" />
     <script type="text/javascript">
         function validarPlantilla(message) {
 
@@ -80,19 +80,19 @@
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
             border-radius: 5px;
-            /*background: rgb(4, 119, 52);
-            background: -moz-linear-gradient(90deg, rgb(4, 119, 52) 100%, rgb(4, 119, 52) 70%);
-            background: -webkit-linear-gradient(90deg, rgb(4, 119, 52) 100%, rgb(4, 119, 52) 70%);
-            background: -o-linear-gradient(90deg, rgb(4, 119, 52) 100%, rgb(4, 119, 52) 70%);
-            background: -ms-linear-gradient(90deg, rgb(4, 119, 52) 100%, rgb(4, 119, 52) 70%);
-            background: linear-gradient(0deg, rgb(4, 119, 52) 100%, rgb(4, 119, 52) 70%);*/
+            /*background: rgb(253, 178, 62);
+            background: -moz-linear-gradient(90deg, rgb(253, 178, 62) 100%, rgb(253, 178, 62) 70%);
+            background: -webkit-linear-gradient(90deg, rgb(253, 178, 62) 100%, rgb(253, 178, 62) 70%);
+            background: -o-linear-gradient(90deg, rgb(253, 178, 62) 100%, rgb(253, 178, 62) 70%);
+            background: -ms-linear-gradient(90deg, rgb(253, 178, 62) 100%, rgb(253, 178, 62) 70%);
+            background: linear-gradient(0deg, rgb(253, 178, 62) 100%, rgb(253, 178, 62) 70%);*/
             background: #B6BF00;
 
             -webkit-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
             -moz-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
             box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
             width: 120px;
-            
+			
         }
 
         .loginTextbox {
@@ -133,7 +133,7 @@
             letter-spacing: -1px;
         }
 
-        /*#mnuPrincipal { background-color:#4A6892; }*/
+													   
 
     </style>
 
@@ -149,15 +149,16 @@
             <table style="width: 100%; align-content: center; align-self: center">
                 <tr>
                     <td>
-                        
+						
                         <a href="/Default.aspx">
-                            <img id="imageApp" alt="" border="0" src="~/images/Soriana.png" runat="server" height="43" width="161"  />
+                            <img src="Images/Soriana.png" alt="" border="0" height="43" width="161" runat="server" />
+                            <%--<img alt="" border="0" height="43" src="~/images/logo.gif" width="161" runat="server" />--%>
                         </a>
                     </td>
                     <td style="align-content: center">
                         <div>
                             <a id="text">
-                                <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="18px" Text="" CssClass="kerning"></asp:Label>
+                                <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="18px" Text="ADMINISTRADOR DE SERVICIOS JURIDICOS CORPORATIVOS" CssClass="kerning"></asp:Label>
                             </a>
                         </div>
                     </td>
@@ -167,29 +168,30 @@
                         <br />
                         <asp:LinkButton ID="btnCerrarSesion" runat="server" Text="Cerrar Sesión" Font-Size="14px" OnClick="btnCerrarSesion_Click" />
                     </td>
-                    <%--<td>
-                            <img id="Img1" alt="" border="0" src="~/images/Soriana.png" runat="server" style="height: 50px; width: 190px" />
-                        
-                    </td>--%>
+							
+																																			
+						
+							 
                 </tr>
             </table>
 
             <table style="width: 100%">
                <tr>
-                  <td style="width: 100%; background-color:#D52B1E; max-height: 23px; height: 23px;">
+                  <td style="width: 100%; background-color: #D52B1E; max-height: 23px; height: 23px;">
                     
                         <asp:Menu ID="mnuPrincipal"
                             runat="server"
+                            
                             BackColor="#D52B1E"
                             DynamicHorizontalOffset="2"
                             Font-Names="Verdana"
                             Font-Size="14px"
-                            ForeColor="white"
+                            ForeColor="#990000"
                             SkipLinkText=""
                             StaticSubMenuIndent="12px"
                             Orientation="Horizontal">
-                            <%--D1D3D7 -- 4A6892--%>
-                            <%--edece6 -- 7E848A--%>
+													
+													
                             
                             <DynamicHoverStyle BackColor="#D52B1E" ForeColor="White" />
                             <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="5px" Font-Names="Arial" />
@@ -199,13 +201,13 @@
                             <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
                             <StaticSelectedStyle BackColor="#FFCC66" />
                             
-                            <%--<DynamicHoverStyle BackColor="#4A6892" ForeColor="White" />
-                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="5px" Font-Names="Arial" />
-                            <DynamicMenuStyle BackColor="#7E848A" />
-                            <DynamicSelectedStyle BackColor="#4A6892" />
-                            <StaticHoverStyle BackColor="#4A6892" ForeColor="White" />
-                            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                            <StaticSelectedStyle BackColor="#FFCC66" />--%>
+																						   
+																													 
+																	
+																		
+																					  
+																								 
+																		   
                         </asp:Menu>
                    
                   </td>
@@ -218,7 +220,7 @@
         </div>
     </form>
 
-    <div id="dialog-confirm" title="Alerta" style="visibility: hidden">
+    <div id="dialog-confirm" title="Alerta" style="visibility: hidden;">
         <p>
             <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
             <label id="lblMessage"></label>

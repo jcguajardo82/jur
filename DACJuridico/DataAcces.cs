@@ -1428,10 +1428,10 @@ namespace DACJuridico
 
                 comm = new SqlCommand("SP_Ins_Plantillas", con);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.AddRange(new SqlParameter[] { 
-                    new SqlParameter("id_clasificacionplantilla", pj.id_clasificacionplantilla) { DbType = System.Data.DbType.Int32}, 
+                comm.Parameters.AddRange(new SqlParameter[] {
+                    new SqlParameter("id_clasificacionplantilla", pj.id_clasificacionplantilla) { DbType = System.Data.DbType.Int32},
                     new SqlParameter("Nombre", pj.Nombre) { DbType = System.Data.DbType.String} ,
-                    new SqlParameter("id_usuario", pj.id_usuario) { DbType = System.Data.DbType.Int32}, 
+                    new SqlParameter("id_usuario", pj.id_usuario) { DbType = System.Data.DbType.Int32},
                     new SqlParameter("Descripcion", pj.Descripcion) { DbType = System.Data.DbType.String} ,
                     new SqlParameter("id_tipoplantilla", pj.id_tipoplantilla) { DbType = System.Data.DbType.Int32} ,
                     new SqlParameter("id_tipovigencia", pj.id_tipovigencia) { DbType = System.Data.DbType.Int32} ,
@@ -1447,9 +1447,9 @@ namespace DACJuridico
                 {
                     commAu.Add(new SqlCommand("SP_Ins_Autorizadores", con));
                     commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
-                    commAu.Last().Parameters.AddRange(new SqlParameter[] { 
-                        new SqlParameter("id_PlantillaJuridica", id) { DbType = System.Data.DbType.Int32}, 
-                        new SqlParameter("id_usuario", au.id_usuario) { DbType = System.Data.DbType.Int32} 
+                    commAu.Last().Parameters.AddRange(new SqlParameter[] {
+                        new SqlParameter("id_PlantillaJuridica", id) { DbType = System.Data.DbType.Int32},
+                        new SqlParameter("id_usuario", au.id_usuario) { DbType = System.Data.DbType.Int32}
                     });
                 }
 
@@ -1457,19 +1457,19 @@ namespace DACJuridico
                 {
                     commAu.Add(new SqlCommand("SP_Ins_Etiqueta", con));
                     commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
-                    commAu.Last().Parameters.AddRange(new SqlParameter[] { 
-                        new SqlParameter("id_PlantillaJuridica", id) { DbType = System.Data.DbType.Int32}, 
+                    commAu.Last().Parameters.AddRange(new SqlParameter[] {
+                        new SqlParameter("id_PlantillaJuridica", id) { DbType = System.Data.DbType.Int32},
                         new SqlParameter("Pregunta", et.Pregunta) { DbType = System.Data.DbType.String},
-                        new SqlParameter("Juridica", et.Juridica) { DbType = System.Data.DbType.Boolean} 
+                        new SqlParameter("Juridica", et.Juridica) { DbType = System.Data.DbType.Boolean}
                     });
                 }
 
                 commAu.Add(new SqlCommand("InsPlantillaArchivo", con));
                 commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
-                commAu.Last().Parameters.AddRange(new SqlParameter[] { 
-                        new SqlParameter("idPlantillaJuridica", id) { DbType = System.Data.DbType.Int32}, 
+                commAu.Last().Parameters.AddRange(new SqlParameter[] {
+                        new SqlParameter("idPlantillaJuridica", id) { DbType = System.Data.DbType.Int32},
                         new SqlParameter("Archivo", archivo.Archivo) { SqlDbType = System.Data.SqlDbType.VarBinary },
-                        new SqlParameter("Nombre", archivo.Nombre) 
+                        new SqlParameter("Nombre", archivo.Nombre)
                     });
 
                 try
@@ -1497,7 +1497,7 @@ namespace DACJuridico
 
                     return true;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     return false;
                 }
@@ -1787,7 +1787,7 @@ namespace DACJuridico
 
                 comm = new SqlCommand("sp_CRUD_TPlantilla", con);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.AddRange(new SqlParameter[] 
+                comm.Parameters.AddRange(new SqlParameter[]
                 {
                     new SqlParameter("@OpCRUD", opCRUD) { DbType = System.Data.DbType.String },
                     new SqlParameter("@idPlantilla", tp.id_tipoplantilla) { DbType = System.Data.DbType.Int32 },
@@ -1834,7 +1834,7 @@ namespace DACJuridico
 
         public List<tbl_TipoPlantilla> GetTipoPlantilla(int idPlantilla)
         {
-            using(SqlConnection con = new SqlConnection(conStr))
+            using (SqlConnection con = new SqlConnection(conStr))
             {
                 SqlCommand comm;
                 SqlDataReader reader;
@@ -1858,9 +1858,10 @@ namespace DACJuridico
 
                     while (reader.Read())
                     {
-                        list.Add(new tbl_TipoPlantilla() {
+                        list.Add(new tbl_TipoPlantilla()
+                        {
                             id_tipoplantilla = (int)reader["id_tipoplantilla"],
-                            Descripcion = (string) reader["Descripcion"]
+                            Descripcion = (string)reader["Descripcion"]
                         });
                     }
 
@@ -1896,7 +1897,7 @@ namespace DACJuridico
         /// <returns></returns>
         public int CreateClasificacionPlantilla(tbl_ClasificacionPlantilla cp)
         {
-            using(SqlConnection con = new SqlConnection(conStr))
+            using (SqlConnection con = new SqlConnection(conStr))
             {
                 SqlCommand comm;
                 SqlTransaction trans;
@@ -1906,7 +1907,7 @@ namespace DACJuridico
                 trans = null;
                 comm = new SqlCommand("SP_CRUD_tbl_ClasificacionPlantilla", con);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.AddRange(new SqlParameter[] 
+                comm.Parameters.AddRange(new SqlParameter[]
                 {
                     new SqlParameter("@opCRUD", "C") { DbType = System.Data.DbType.String },
                     new SqlParameter("@idTipoPlantilla", cp.id_tipoplantilla) { DbType = System.Data.DbType.Int32 },
@@ -2011,7 +2012,7 @@ namespace DACJuridico
 
         public List<ClasificacionPlantillas> GetClasificacionTipoPlantilla(int idTipo, int idClasificacion)
         {
-            using(SqlConnection con = new SqlConnection(conStr))
+            using (SqlConnection con = new SqlConnection(conStr))
             {
                 SqlCommand comm;
                 SqlDataReader reader;
@@ -2039,7 +2040,7 @@ namespace DACJuridico
                         list.Add(new ClasificacionPlantillas()
                         {
                             IDClasificacion = (int)reader["id_clasificacionplantilla"],
-                            IDTipoPlantilla = (int) reader["id_tipoplantilla"],
+                            IDTipoPlantilla = (int)reader["id_tipoplantilla"],
                             ClasificacionPlantilla = (string)reader["ClasificacionPlantilla"],
                             TipoPlantilla = (string)reader["TipoPlantilla"]
                         });
@@ -2461,8 +2462,8 @@ namespace DACJuridico
                 {
                     comm = new SqlCommand("InsSolicitud", con);
                     comm.CommandType = System.Data.CommandType.StoredProcedure;
-                    comm.Parameters.AddRange(new SqlParameter[] { 
-                    new SqlParameter("idPlantilla", sol.IdPlantilla) { DbType = System.Data.DbType.Int32}, 
+                    comm.Parameters.AddRange(new SqlParameter[] {
+                    new SqlParameter("idPlantilla", sol.IdPlantilla) { DbType = System.Data.DbType.Int32},
                     new SqlParameter("idStatus", sol.IdStatus) { DbType = System.Data.DbType.Int32} ,
                     //new SqlParameter("idAutorizador", sol.IdAutorizador) { DbType = System.Data.DbType.Int32},
                     new SqlParameter("idUsuario",sol.IdUsuario){DbType=System.Data.DbType.Int32},
@@ -2475,10 +2476,10 @@ namespace DACJuridico
                     {
                         commAu.Add(new SqlCommand("InsEtiquetaSolicitud", con));
                         commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
-                        commAu.Last().Parameters.AddRange(new SqlParameter[] { 
-                        new SqlParameter("SolicitudId", id) { DbType = System.Data.DbType.Int32}, 
+                        commAu.Last().Parameters.AddRange(new SqlParameter[] {
+                        new SqlParameter("SolicitudId", id) { DbType = System.Data.DbType.Int32},
                         new SqlParameter("EtiquetaId", et.IdEtiqueta) { DbType = System.Data.DbType.Int32},
-                        new SqlParameter("Valor", et.Valor) { DbType = System.Data.DbType.String} 
+                        new SqlParameter("Valor", et.Valor) { DbType = System.Data.DbType.String}
                         });
                     }
 
@@ -2489,8 +2490,8 @@ namespace DACJuridico
                         {
                             commAu.Add(new SqlCommand("InsArchivoSolicitud", con));
                             commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
-                            commAu.Last().Parameters.AddRange(new SqlParameter[] { 
-                            new SqlParameter("SolicitudId", id) { DbType = System.Data.DbType.Int32}, 
+                            commAu.Last().Parameters.AddRange(new SqlParameter[] {
+                            new SqlParameter("SolicitudId", id) { DbType = System.Data.DbType.Int32},
                             new SqlParameter("TipoArchivoId", ar.IdTipoDocumento) { DbType = System.Data.DbType.Int32 },
                             new SqlParameter("Nombre", ar.Nombre) { DbType = System.Data.DbType.String} ,
                             new SqlParameter("Ruta", ar.Ruta) { DbType = System.Data.DbType.String},
@@ -2501,10 +2502,10 @@ namespace DACJuridico
 
                     commAu.Add(new SqlCommand("InsArchivoEditadoSolicitud", con));
                     commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
-                    commAu.Last().Parameters.AddRange(new SqlParameter[] { 
-                    new SqlParameter("id_SolicitudId", id) { DbType = System.Data.DbType.Int32}, 
+                    commAu.Last().Parameters.AddRange(new SqlParameter[] {
+                    new SqlParameter("id_SolicitudId", id) { DbType = System.Data.DbType.Int32},
                     new SqlParameter("Archivo", archivo),
-                    new SqlParameter("Nombre", DateTime.Now.ToString("ddMMyymmss") + ".docx") { DbType = System.Data.DbType.String} 
+                    new SqlParameter("Nombre", DateTime.Now.ToString("ddMMyymmss") + ".docx") { DbType = System.Data.DbType.String}
                     });
 
 
@@ -3486,7 +3487,7 @@ namespace DACJuridico
 
                 comm = new SqlCommand("UpdSolicitud2", con);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
-                comm.Parameters.AddRange(new SqlParameter[] { 
+                comm.Parameters.AddRange(new SqlParameter[] {
                     new SqlParameter("solicitudId", solicitudId) { DbType = System.Data.DbType.Int32},
                     new SqlParameter("action", action) { DbType = System.Data.DbType.Int32}
                 });
@@ -3497,10 +3498,10 @@ namespace DACJuridico
                 {
                     commAu.Add(new SqlCommand("UpdEtiquetaSolicitud", con));
                     commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
-                    commAu.Last().Parameters.AddRange(new SqlParameter[] 
-                    { 
-                        new SqlParameter("IdSolicitudEtiqueta", et.IdEtiqueta) { DbType = System.Data.DbType.Int32}, 
-                        new SqlParameter("Valor", et.Valor) { DbType = System.Data.DbType.String} 
+                    commAu.Last().Parameters.AddRange(new SqlParameter[]
+                    {
+                        new SqlParameter("IdSolicitudEtiqueta", et.IdEtiqueta) { DbType = System.Data.DbType.Int32},
+                        new SqlParameter("Valor", et.Valor) { DbType = System.Data.DbType.String}
                     });
                 }
 
@@ -3511,9 +3512,9 @@ namespace DACJuridico
                     {
                         commAu.Add(new SqlCommand("InsArchivoSolicitud", con));
                         commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
-                        commAu.Last().Parameters.AddRange(new SqlParameter[] 
-                        { 
-                            new SqlParameter("SolicitudId", solicitudId) { DbType = System.Data.DbType.Int32}, 
+                        commAu.Last().Parameters.AddRange(new SqlParameter[]
+                        {
+                            new SqlParameter("SolicitudId", solicitudId) { DbType = System.Data.DbType.Int32},
                             new SqlParameter("TipoArchivoId", archivoNuevo.IdTipoDocumento) { DbType = System.Data.DbType.Int32 },
                             new SqlParameter("Nombre", archivoNuevo.Nombre) { DbType = System.Data.DbType.String},
                             new SqlParameter("Archivo", archivoNuevo.Archivo)
@@ -3528,8 +3529,8 @@ namespace DACJuridico
                     {
                         commAu.Add(new SqlCommand("DelArchivoSolicitud", con));
                         commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
-                        commAu.Last().Parameters.AddRange(new SqlParameter[] 
-                        { 
+                        commAu.Last().Parameters.AddRange(new SqlParameter[]
+                        {
                             new SqlParameter("IdArchivoSolicitud", ae.IdArchivoSolicitud) { DbType = System.Data.DbType.Int32}
                         });
                     }
@@ -3538,10 +3539,10 @@ namespace DACJuridico
 
                 commAu.Add(new SqlCommand("InsArchivoEditadoSolicitudEdit", con));
                 commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
-                commAu.Last().Parameters.AddRange(new SqlParameter[] { 
+                commAu.Last().Parameters.AddRange(new SqlParameter[] {
                     new SqlParameter("Archivo", archivo) { SqlDbType = System.Data.SqlDbType.VarBinary },
-                    new SqlParameter("SolicitudId", solicitudId) { DbType = System.Data.DbType.Int32}, 
-                    new SqlParameter("Nombre", DateTime.Now.ToString("ddMMyymmss") + ".docx") { DbType = System.Data.DbType.String} 
+                    new SqlParameter("SolicitudId", solicitudId) { DbType = System.Data.DbType.Int32},
+                    new SqlParameter("Nombre", DateTime.Now.ToString("ddMMyymmss") + ".docx") { DbType = System.Data.DbType.String}
                     });
 
 
@@ -3674,6 +3675,255 @@ namespace DACJuridico
             }
         }
 
+        #endregion
+
+
+        #region ConfigPlantilasVobo
+        public List<PlantillasVoBo> GetPlantillasVobo()
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                List<PlantillasVoBo> list = new List<PlantillasVoBo>();
+
+                comm = new SqlCommand("PlantillasVoBo_sUp", con);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        list.Add(new PlantillasVoBo()
+                        {
+                            Id_PlantillaJuridica = (int)reader["Id_PlantillaJuridica"],
+                            Nombre = (string)reader["Nombre"],
+                            Descripcion = (string)reader["Descripcion"],
+                            DescClas = (string)reader["DescClas"],
+                            voBo = (bool)reader["voBo"],
+
+                        });
+                    }
+
+                    con.Close();
+
+                    return list;
+                }
+                catch
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+
+        public int PlantillasVoBo_uUp(int Id_PlantillaJuridica, bool voBo)
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                SqlCommand cmd;
+
+                cmd = new SqlCommand("PlantillasVoBo_uUp", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("@Id_PlantillaJuridica", Id_PlantillaJuridica) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@voBo", voBo) { DbType = System.Data.DbType.Boolean });
+
+
+                try
+                {
+                    conn.Open();
+
+                    int verificator = 0;
+                    verificator = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    conn.Close();
+
+                    return verificator;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+                finally
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Dispose();
+                    }
+                }
+            }
+        }
+
+        public int? ValidaFolioSolicitud_sUp(string folio)
+        {
+            int? verificador = 0;
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                List<PlantillasVoBo> list = new List<PlantillasVoBo>();
+
+                comm = new SqlCommand("ValidaFolioSolicitud_sUp", con);
+                comm.Parameters.Add(new SqlParameter("@folio", folio) { DbType = System.Data.DbType.String });
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        verificador = (int)reader["id_Solicitud"];
+                    }
+
+                    con.Close();
+
+                    return verificador;
+                }
+                catch
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+
+        public bool tbl_VoBoSolicitudes_iUp(tbl_VoBoSolicitudes voBo, List<PlantillaArchivo> archivos)
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                SqlCommand cmd;
+                SqlTransaction trans =null;
+                List<SqlCommand> commAu = new List<SqlCommand>();
+
+                cmd = new SqlCommand("tbl_VoBoSolicitudes_iUp", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("@idSolicitud", voBo.idSolicitud) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@comentarios", voBo.comentarios) { DbType = System.Data.DbType.String });
+                cmd.Parameters.Add(new SqlParameter("@correo1", voBo.correo1) { DbType = System.Data.DbType.String });
+                cmd.Parameters.Add(new SqlParameter("@correo2", voBo.correo2) { DbType = System.Data.DbType.String });
+                cmd.Parameters.Add(new SqlParameter("@correo3", voBo.correo3) { DbType = System.Data.DbType.String });
+                cmd.Parameters.Add(new SqlParameter("@correo4", voBo.correo4) { DbType = System.Data.DbType.String });
+                cmd.Parameters.Add(new SqlParameter("@correo5", voBo.correo5) { DbType = System.Data.DbType.String });
+                cmd.Parameters.Add(new SqlParameter("@id_user", voBo.id_user) { DbType = System.Data.DbType.Int32 });
+
+                try
+                {
+                    conn.Open();
+
+                    trans = conn.BeginTransaction();
+
+                    cmd.Transaction = trans;
+
+                    int id = 0;
+                    id = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    foreach (var archivo in archivos)
+                    {
+                        commAu.Add(new SqlCommand("tbl_VoBoSolicitudesArchivos_iUp", conn));
+                        commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
+                        commAu.Last().Parameters.AddRange(new SqlParameter[] {
+                        new SqlParameter("Id_voBoSol", id) { DbType = System.Data.DbType.Int32},
+                        new SqlParameter("Archivo", archivo.Archivo) { SqlDbType = System.Data.SqlDbType.VarBinary },
+                        new SqlParameter("Nombre", archivo.Nombre)
+                    });
+                    }
+
+
+
+
+                    if (id > 0)
+                    {
+                        foreach (SqlCommand co in commAu)
+                        {
+                            co.Transaction = trans;
+                            co.Parameters[0].Value = id;
+                            co.ExecuteNonQuery();
+                        }
+                    }
+
+                    trans.Commit();
+
+                    conn.Close();
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+                finally
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        if (trans != null)
+                        {
+                            trans.Rollback();
+                        }
+
+                        conn.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Dispose();
+                    }
+                    if (commAu != null)
+                    {
+                        if (commAu.Count > 0)
+                        {
+                            foreach (SqlCommand c in commAu)
+                            {
+                                c.Dispose();
+                            }
+                        }
+                    }
+                }
+            }
+        }
         #endregion
 
     }

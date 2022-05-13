@@ -7,3 +7,9 @@ C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\bin\Release\Entidades.pdb
 C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Release\Entidades.dll
 C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Release\Entidades.pdb
 C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Release\Entidades.csprojResolveAssemblyReference.cache
+C:\Proyectos\Juridico\Entidades\bin\Release\Entidades.dll
+C:\Proyectos\Juridico\Entidades\bin\Release\Entidades.pdb
+C:\Proyectos\Juridico\Entidades\obj\Release\Entidades.csprojAssemblyReference.cache
+C:\Proyectos\Juridico\Entidades\obj\Release\Entidades.csproj.CoreCompileInputs.cache
+C:\Proyectos\Juridico\Entidades\obj\Release\Entidades.dll
+C:\Proyectos\Juridico\Entidades\obj\Release\Entidades.pdb
