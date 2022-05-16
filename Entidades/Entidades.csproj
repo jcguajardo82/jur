@@ -61,6 +61,7 @@
     <Compile Include="ReporteCartasPoder.cs" />
     <Compile Include="ReporteStatus.cs" />
     <Compile Include="Solicitud.cs" />
+    <Compile Include="SolicitudRetro.cs" />
     <Compile Include="SolicitudEtiqueta.cs" />
     <Compile Include="tblSolicitudEtiquetas.cs" />
     <Compile Include="tbl_Autorizador.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="tbl_usuario.cs" />
     <Compile Include="tbl_Vigencia.cs" />
     <Compile Include="tbl_VoBoSolicitudes.cs" />
+    <Compile Include="tbl_VoBoSolicitudesRetro.cs" />
     <Compile Include="TipoDocumento.cs" />
     <Compile Include="ClasificacionPlantillas.cs" />
     <Compile Include="Usuario.cs" />

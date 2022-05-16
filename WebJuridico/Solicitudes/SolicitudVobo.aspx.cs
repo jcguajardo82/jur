@@ -59,13 +59,16 @@ public partial class Solicitudes_SolicitudVobo : PaginaBase
         if (idUsuario > 0)
         {
 
+            int totalCorreos = 0;
+            List<string> correos = new List<string>();
+
             if (hddIdSol.Value == "0")
             {
                 MostrarMensaje("Debe ingresar un folio de solicitud valido.");
                 txtBusqueda.Focus();
                 return;
             }
-            int totalCorreos = 0;
+          
 
             if (txtCorreo1.Text.Trim() != string.Empty)
             {
@@ -127,8 +130,16 @@ public partial class Solicitudes_SolicitudVobo : PaginaBase
                 id_user = idUsuario
             };
 
+
+            correos.Add(txtCorreo1.Text);
+            correos.Add(txtCorreo2.Text);
+            correos.Add(txtCorreo3.Text);
+            correos.Add(txtCorreo4.Text);
+            correos.Add(txtCorreo5.Text);
+
+
             var archivos = (List<PlantillaArchivo>)Session["lstArchivoPlantilla"];
-            DataAcces.tbl_VoBoSolicitudes_iUp(voBo,archivos);
+            DataAcces.tbl_VoBoSolicitudes_iUp(voBo,archivos,correos);
 
             iniciaControles();
 

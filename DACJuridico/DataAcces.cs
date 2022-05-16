@@ -3831,12 +3831,12 @@ namespace DACJuridico
             }
         }
 
-        public bool tbl_VoBoSolicitudes_iUp(tbl_VoBoSolicitudes voBo, List<PlantillaArchivo> archivos)
+        public bool tbl_VoBoSolicitudes_iUp(tbl_VoBoSolicitudes voBo, List<PlantillaArchivo> archivos, List<string> correos)
         {
             using (SqlConnection conn = new SqlConnection(conStr))
             {
                 SqlCommand cmd;
-                SqlTransaction trans =null;
+                SqlTransaction trans = null;
                 List<SqlCommand> commAu = new List<SqlCommand>();
 
                 cmd = new SqlCommand("tbl_VoBoSolicitudes_iUp", conn);
@@ -3873,7 +3873,18 @@ namespace DACJuridico
                     });
                     }
 
-
+                    foreach (string item in correos)
+                    {
+                        if (item.Length > 0)
+                        {
+                            commAu.Add(new SqlCommand("tbl_VoBoSolicitudesRetro_iUp", conn));
+                            commAu.Last().CommandType = System.Data.CommandType.StoredProcedure;
+                            commAu.Last().Parameters.AddRange(new SqlParameter[] {
+                            new SqlParameter("Id_voBoSol", id) { DbType = System.Data.DbType.Int32},
+                            new SqlParameter("correo", item) { SqlDbType = System.Data.SqlDbType.VarChar },
+                            new SqlParameter("id_user", voBo.id_user)});
+                        }
+                    }
 
 
                     if (id > 0)
@@ -3920,6 +3931,260 @@ namespace DACJuridico
                                 c.Dispose();
                             }
                         }
+                    }
+                }
+            }
+        }
+
+
+
+        public List<tbl_VoBoSolicitudesRetro> tbl_VoBoSolicitudesRetro_sUp(int Id_voBoSol)
+        {
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                List<tbl_VoBoSolicitudesRetro> list = new List<tbl_VoBoSolicitudesRetro>();
+
+                comm = new SqlCommand("tbl_VoBoSolicitudesRetro_sUp", con);
+                comm.Parameters.Add(new SqlParameter("@Id_voBoSol", Id_voBoSol) { DbType = System.Data.DbType.Int32 });
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        var item = new tbl_VoBoSolicitudesRetro();
+
+
+
+
+                        item.Id_voBoSol = (int)reader["Id_voBoSol"];
+                        item.Id_voBoSolRetro = (int)reader["Id_voBoSolRetro"];
+                        item.correo = (string)reader["correo"];
+                        item.comentariosNegocio = (string)reader["comentariosNegocio"];
+                        item.riesgosDestacados = (string)reader["riesgosDestacados"];
+                        item.id_user = (int)reader["id_user"];
+                        if (reader["autorizado"] != DBNull.Value)
+                        {
+                            item.autorizado = (bool?)reader["autorizado"];
+                        }
+                        if (reader["fec_autorizado"] != DBNull.Value)
+                        {
+                            item.fec_autorizado = (DateTime)reader["fec_autorizado"];
+                        }
+
+                        list.Add(item);
+                    }
+
+                    con.Close();
+
+                    return list;
+                }
+                catch
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+
+        public List<SolicitudRetro> tbl_VoBoSolicitudesRetroById_sUp(int Id_voBoSolRetro)
+        {
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                List<SolicitudRetro> list = new List<SolicitudRetro>();
+
+                comm = new SqlCommand("tbl_VoBoSolicitudesRetroById_sUp", con);
+                comm.Parameters.Add(new SqlParameter("@Id_voBoSolRetro", Id_voBoSolRetro) { DbType = System.Data.DbType.Int32 });
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        var item = new SolicitudRetro();
+
+
+
+
+                        item.Id_voBoSol = (int)reader["Id_voBoSol"];
+                        item.Id_voBoSolRetro = (int)reader["Id_voBoSolRetro"];
+                        item.correo = (string)reader["correo"];
+                        item.comentariosNegocio = (string)reader["comentariosNegocio"];
+                        item.riesgosDestacados = (string)reader["riesgosDestacados"];
+                        item.id_user = (int)reader["id_user"];
+                        if (reader["autorizado"] != DBNull.Value)
+                        {
+                            item.autorizado = (bool?)reader["autorizado"];
+                        }
+                        if (reader["fec_autorizado"] != DBNull.Value)
+                        {
+                            item.fec_autorizado = (DateTime)reader["fec_autorizado"];
+                        }
+
+                        item.Detalle = (string)reader["comentarios"];
+                        list.Add(item);
+                    }
+
+                    con.Close();
+
+                    return list;
+                }
+                catch
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+
+        public int tbl_VoBoSolicitudesRetro_uUp(tbl_VoBoSolicitudesRetro solicitud)
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                SqlCommand cmd;
+
+                cmd = new SqlCommand("tbl_VoBoSolicitudesRetro_uUp", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("@Id_voBoSolRetro", solicitud.Id_voBoSolRetro) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@comentariosNegocio", solicitud.comentariosNegocio) { DbType = System.Data.DbType.String });
+                cmd.Parameters.Add(new SqlParameter("@riesgosDestacados", solicitud.riesgosDestacados) { DbType = System.Data.DbType.String });
+                cmd.Parameters.Add(new SqlParameter("@autorizado", solicitud.autorizado) { DbType = System.Data.DbType.Boolean });
+
+
+                try
+                {
+                    conn.Open();
+
+                    int verificator = 0;
+                    verificator = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    conn.Close();
+
+                    return verificator;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+                finally
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Dispose();
+                    }
+                }
+            }
+        }
+
+        public List<tbl_VoBoSolicitudes> tbl_VoBoSolicitudes_sUp()
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                List<tbl_VoBoSolicitudes> list = new List<tbl_VoBoSolicitudes>();
+
+                comm = new SqlCommand("tbl_VoBoSolicitudes_sUp", con);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        list.Add(new tbl_VoBoSolicitudes()
+                        {
+                            idSolicitud = (int)reader["idSolicitud"],
+                            Id_voBoSol = (int)reader["Id_voBoSol"],
+                            folio = (string)reader["folio"],
+                            correo1 = (string)reader["correo1"],
+                            correo2 = (string)reader["correo2"],
+                            correo3 = (string)reader["correo3"],
+                            correo4 = (string)reader["correo4"],
+                            correo5 = (string)reader["correo5"],
+                            fec_movto = (DateTime)reader["fec_movto"],
+
+
+                        });
+                    }
+
+                    con.Close();
+
+                    return list;
+                }
+                catch
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
                     }
                 }
             }

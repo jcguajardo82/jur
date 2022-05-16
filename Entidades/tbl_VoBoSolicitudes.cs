@@ -18,6 +18,6 @@ namespace Entidades
         public DateTime fec_movto { get; set; }
         public int id_user { get; set; }
 
-
+        public string folio { get; set; }
     }
 }
