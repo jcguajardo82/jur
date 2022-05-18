@@ -2597,7 +2597,10 @@ namespace DACJuridico
                             IdStatus = (int)reader["id_Status"],
                             Fecha = reader["fechaCreacion"] == DBNull.Value ? new DateTime?() : (DateTime)reader["fechaCreacion"],
                             IdPlantilla = (int)reader["Id_PlantillaJuridica"],
-                            Solicitante = reader["NEmpleado"].ToString() + " - " + (string)reader["Usuario"]
+                            Solicitante = reader["NEmpleado"].ToString() + " - " + (string)reader["Usuario"],
+                            Correo = (string)reader["Correo"],
+                            EstatusAutPrev = (string)reader["EstatusAutPrev"],
+                            Id_voBoSol = (int)reader["Id_voBoSol"],
                         });
                     }
 
@@ -4169,6 +4172,61 @@ namespace DACJuridico
                     return list;
                 }
                 catch
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+
+        //ValidaSolicitudVoboPlantilla_sUp
+
+        public string ValidaSolicitudVoboPlantilla_sUp(int SolicitudId)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                var mensaje = string.Empty;
+
+                comm = new SqlCommand("ValidaSolicitudVoboPlantilla_sUp", con);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@SolicitudId", SolicitudId) { DbType = System.Data.DbType.Int32 });
+
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+
+                        mensaje = (string)reader["Message"];
+
+                    }
+
+                    con.Close();
+
+                    return mensaje;
+                }
+                catch(Exception ex)
                 {
                     return null;
                 }

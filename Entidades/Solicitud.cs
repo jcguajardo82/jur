@@ -28,7 +28,9 @@ namespace Entidades
         private string solicitante;
         private string nombreAutorizador;
         private string nombreAbogado;
-
+        private string correo;
+        private string estatusAutPrev;
+        private int id_voBoSol;
         
         private List<SolicitudEtiqueta> etiquetas;
 
@@ -247,6 +249,43 @@ namespace Entidades
         {
             get { return nombreAbogado; }
             set { nombreAbogado = value; }
+        }
+
+
+        public string Correo
+        {
+            get
+            {
+                return correo;
+            }
+            set
+            {
+                correo = value;
+            }
+        }
+
+        public string EstatusAutPrev
+        {
+            get
+            {
+                return estatusAutPrev;
+            }
+            set
+            {
+                estatusAutPrev = value;
+            }
+        }
+
+        public int Id_voBoSol
+        {
+            get
+            {
+                return id_voBoSol;
+            }
+            set
+            {
+                id_voBoSol = value;
+            }
         }
 
         #endregion

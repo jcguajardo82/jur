@@ -86,6 +86,15 @@ public partial class Solicitudes_Consultar : PaginaBase
             //Redirigir a Solicitudes2.aspx para complementar Solicitud
             Response.Redirect("~/Solicitudes/ConsultarSolicitud.aspx?id=" + solicitudId.ToString() + "&action=2");
         }
+
+        if (e.CommandName == "VerSolicitudVobo")
+        {
+            int solicitudId = Convert.ToInt32(e.CommandArgument);
+            var mail = ((LinkButton)e.CommandSource).Text;
+            
+
+            Response.Redirect("~/Solicitudes/SolicitudVoBoRetro.aspx?id=" + solicitudId.ToString() + "&correo="+mail);
+        }
     }
 
     protected void grvSolicitudes_PageIndexChanging(object sender, GridViewPageEventArgs e)

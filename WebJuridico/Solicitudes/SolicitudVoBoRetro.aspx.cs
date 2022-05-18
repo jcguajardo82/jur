@@ -19,6 +19,7 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
         List<int> PerfilesPermitidos = new List<int> { 1, 4 }; // “AdmGral” y “Solicitador” 
 
         var solicitudId = ToInt32_0(Request.QueryString["id"]);
+        var correo = (Request.QueryString["correo"]).ToString();
 
         if (!PerfilesPermitidos.Contains(perf))
         {
@@ -38,6 +39,13 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
             iniciaControles();
 
             CargarDDLCorreos(solicitudId);
+
+            if (!string.IsNullOrEmpty(correo))
+            {
+                ddlCorreos.SelectedValue = ddlCorreos.Items.FindByText(correo).Value;
+
+                ddlCorreos_SelectedIndexChanged(this, null);
+            }
         }
     }
 
@@ -100,20 +108,20 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
             txtRiesgos.Text = solicitud.riesgosDestacados;
             txtDesc.Text = solicitud.Detalle;
 
-            if (solicitud.autorizado == null)
-            {
-                btnAutorizar.Visible = true;
-                btnRechazar.Visible = true;
-                txtComentarios.ReadOnly = false;
-                txtRiesgos.ReadOnly = false;
-            }
-            else
-            {
-                btnAutorizar.Visible = false;
-                btnRechazar.Visible = false;
-                txtComentarios.ReadOnly = true;
-                txtRiesgos.ReadOnly = true;
-            }
+            //if (solicitud.autorizado == null)
+            //{
+            //    btnAutorizar.Visible = true;
+            //    btnRechazar.Visible = true;
+            //    txtComentarios.ReadOnly = false;
+            //    txtRiesgos.ReadOnly = false;
+            //}
+            //else
+            //{
+            //    btnAutorizar.Visible = false;
+            //    btnRechazar.Visible = false;
+            //    txtComentarios.ReadOnly = true;
+            //    txtRiesgos.ReadOnly = true;
+            //}
             PanelSol.Visible = true;
         }
         else
@@ -142,8 +150,8 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
         txtComentarios.Text = string.Empty;
         txtDesc.Text = string.Empty;
         txtRiesgos.Text = string.Empty;
-        btnAutorizar.Visible = false;
-        btnRechazar.Visible = false;
+        //btnAutorizar.Visible = false;
+        //btnRechazar.Visible = false;
     }
     #endregion
 }

@@ -24,14 +24,14 @@
                             <tr>
                                 <td colspan="2">
                                     <div style="align-content: center">
-<%--                                    OnRowEditing="grvSolicitudes_RowEditing"
+                                        <%--                                    OnRowEditing="grvSolicitudes_RowEditing"
                                         OnSelectedIndexChanged="grvSolicitudes_SelectedIndexChanged"--%>
                                         <asp:GridView ID="grvSolicitudes" runat="server"
                                             Width="1000px"
                                             AllowPaging="True"
                                             AllowSorting="True"
                                             AutoGenerateColumns="False"
-                                            CaptionAlign="Left" 
+                                            CaptionAlign="Left"
                                             CellPadding="4"
                                             ForeColor="#333333"
                                             GridLines="None"
@@ -74,6 +74,15 @@
 
                                                 <asp:BoundField HeaderStyle-Width="100px" DataField="Clasificacion" SortExpression="Clasificacion" HeaderText="Clasificación" ItemStyle-HorizontalAlign="Center" />
                                                 <asp:BoundField HeaderStyle-Width="300px" DataField="Tipo" SortExpression="Tipo" HeaderText="Tipo de plantilla" ItemStyle-HorizontalAlign="Center" />
+                                                <%--<asp:BoundField HeaderStyle-Width="300px" DataField="Correo" SortExpression="Correo" HeaderText="Mail Área Afectacipon" ItemStyle-HorizontalAlign="Center" />--%>
+
+                                                <asp:TemplateField HeaderStyle-Width="135px" SortExpression="Correo" HeaderText="Mail Área Afectacipon" ItemStyle-HorizontalAlign="Center">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="btnCorreo" runat="server" CommandName="VerSolicitudVobo" CommandArgument='<%# Eval("id_voBoSol") %>' Text='<%# Eval("Correo") %>' />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+
+                                                <asp:BoundField HeaderStyle-Width="300px" DataField="EstatusAutPrev" SortExpression="EstatusAutPrev" HeaderText="Estatus Aut Previa" ItemStyle-HorizontalAlign="Center" />
                                                 <asp:BoundField HeaderStyle-Width="200px" DataField="Status" SortExpression="Status" HeaderText="Estatus" ItemStyle-HorizontalAlign="Center" />
 
                                                 <asp:TemplateField HeaderStyle-Width="115px">
@@ -82,11 +91,10 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
 
-<%--                                                <asp:CommandField ShowEditButton="true" EditText="Complementar" ItemStyle-HorizontalAlign="Center" />--%>
+                                                <%--                                                <asp:CommandField ShowEditButton="true" EditText="Complementar" ItemStyle-HorizontalAlign="Center" />--%>
 
-<%--            				                    <asp:HyperLinkField DataNavigateUrlFields="IdPlantilla" DataNavigateUrlFormatString="~/Solicitudes/Solicitudes.aspx?plantilla={0}" HeaderText="" Text="Complementar">
+                                                <%--            				                    <asp:HyperLinkField DataNavigateUrlFields="IdPlantilla" DataNavigateUrlFormatString="~/Solicitudes/Solicitudes.aspx?plantilla={0}" HeaderText="" Text="Complementar">
 				                                </asp:HyperLinkField>--%>
-
                                             </Columns>
                                             <%--<FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                                             <HeaderStyle BackColor="#DD4433" Font-Bold="True" ForeColor="Black" />--%>

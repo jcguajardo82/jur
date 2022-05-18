@@ -75,7 +75,7 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
                     }
                 }
 
-                else if (action == 4) 
+                else if (action == 4)
                 {
                     ////Si se desea permitir que un abogado rechaze una solicitud:
                     //if (perf == 1 | perf == 2 | perf == 3) //admin general, asis poderes, asis contratos. Caso #6
@@ -181,7 +181,8 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
             lblEstatus.Text = "Rechazada por Autorizador";
         }
 
-        else {
+        else
+        {
             MostrarMensaje("Ocurrió un problema al intentar rechazar la solicitud.");
         }
     }
@@ -190,19 +191,39 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
     {
         int usuarioId = ToInt32_0(Session["idUsuario"]);
 
-        bool res = DataAcces.UpdSolicitudStatusId(solicitudId, 2, usuarioId);
 
-        if (res)
+        string validacion = DataAcces.ValidaSolicitudVoboPlantilla_sUp(solicitudId);
+
+        switch (validacion)
         {
-            MostrarMensaje("Se ha dado el visto bueno a la solicitud.");
-            btnRechazar.Visible = false;
-            btnAutorizar.Visible = false;
-            lblEstatus.Text = "Autorizada";
+            case "0":
+                bool res = DataAcces.UpdSolicitudStatusId(solicitudId, 2, usuarioId);
+
+                if (res)
+                {
+                    MostrarMensaje("Se ha dado el visto bueno a la solicitud.");
+                    btnRechazar.Visible = false;
+                    btnAutorizar.Visible = false;
+                    lblEstatus.Text = "Autorizada";
+                }
+
+                else
+                {
+                    MostrarMensaje("Ocurrió un problema al intentar dar visto bueno a la solicitud.");
+                }
+                break;
+            case "1":
+                MostrarMensaje("Solicitud requiere visto bueno adicional.Favor de generalo y autorizarlos. ");
+                break;
+            case "2":
+                MostrarMensaje("Solicitud requiere que todas las áreas involuvradas den su visto bueno.Favor de solicitarlo a las areas pendientes.");
+                break;
+            default:
+                MostrarMensaje("Ocurrió un problema al intentar dar visto bueno a la solicitud.");
+                break;
         }
 
-        else {
-            MostrarMensaje("Ocurrió un problema al intentar dar visto bueno a la solicitud.");
-        }
+
     }
 
     protected void btnGuardar_Click(object sender, EventArgs e)
@@ -248,7 +269,7 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
 
         foreach (ArchivoSolicitud ar in archivos)
         {
-            if (ar.EsNuevo == true) 
+            if (ar.EsNuevo == true)
             {
                 archivosNuevos.Add(new ArchivoSolicitud()
                 {
@@ -408,10 +429,10 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
     }
 
     protected void grvDocumentos_RowCommand(object sender, GridViewCommandEventArgs e)
-{
+    {
         int index = Convert.ToInt32(e.CommandArgument);
         GridViewRow row = (GridViewRow)grvDocumentos.Rows[index];
-            
+
         int documentoId = Convert.ToInt32(((Label)row.FindControl("lblDocumentoId")).Text);
 
         if (e.CommandName == "Delete")
@@ -492,7 +513,8 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
         List<ArchivoSolicitud> archivos;
 
 
-        if (Session["archivos"] == null) {
+        if (Session["archivos"] == null)
+        {
             Session["archivos"] = new List<ArchivoSolicitud>();
         }
 
@@ -650,7 +672,7 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
         grvEtiquetas.DataSource = sol.Etiquetas;
         grvEtiquetas.DataBind();
 
-        
+
 
         List<int> statusIdsNoPermitidos = new List<int> { 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 }; //removed: 5, 
 
@@ -702,122 +724,122 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
 
 // ***** Begin disabled code ***** //
 
-    //protected void CargarRblAbogado()
-    //{
-    //    DataTable dt = ConvertToDataTable(DataAcces.GetAbogado());
-    //    RblAbogado.DataSource = dt;
-    //    RblAbogado.DataTextField = "Nombre";
-    //    RblAbogado.DataValueField = "Id1";
-    //    RblAbogado.DataBind();
-    //}
+//protected void CargarRblAbogado()
+//{
+//    DataTable dt = ConvertToDataTable(DataAcces.GetAbogado());
+//    RblAbogado.DataSource = dt;
+//    RblAbogado.DataTextField = "Nombre";
+//    RblAbogado.DataValueField = "Id1";
+//    RblAbogado.DataBind();
+//}
 
-    //protected void BtnAbogadoRechazar_Click(object sender, EventArgs e)
-    //{
-    //    //esto se necesita activar desde una pregunta yes/no *****
+//protected void BtnAbogadoRechazar_Click(object sender, EventArgs e)
+//{
+//    //esto se necesita activar desde una pregunta yes/no *****
 
-    //    bool res = DataAcces.UpdSolicitudStatusId(solicitudId, 4);
+//    bool res = DataAcces.UpdSolicitudStatusId(solicitudId, 4);
 
-    //    if (res)
-    //    {
-    //        MostrarMensage("Se ha rechazado la solicitud.");
-    //        PanelBotonesAbogado.Visible = false;
-    //        lblEstatus.Text = "Rechazada en Jurídico";
-    //    }
+//    if (res)
+//    {
+//        MostrarMensage("Se ha rechazado la solicitud.");
+//        PanelBotonesAbogado.Visible = false;
+//        lblEstatus.Text = "Rechazada en Jurídico";
+//    }
 
-    //    else
-    //    {
-    //        MostrarMensage("Ocurrió un problema al intentar rechazar la solicitud.");
-    //    }
-    //}
+//    else
+//    {
+//        MostrarMensage("Ocurrió un problema al intentar rechazar la solicitud.");
+//    }
+//}
 
-    //protected void BtnAbogadoAsignar_Click(object sender, EventArgs e)
-    //{
-    //    if (PanelAsignarAbogado.Visible == false)
-    //    {
-    //        CargarRblAbogado();
-    //        PanelAsignarAbogado.Visible = true;
-    //        BtnAbogadoRechazar.Visible = false;
-    //        return;
-    //    }
+//protected void BtnAbogadoAsignar_Click(object sender, EventArgs e)
+//{
+//    if (PanelAsignarAbogado.Visible == false)
+//    {
+//        CargarRblAbogado();
+//        PanelAsignarAbogado.Visible = true;
+//        BtnAbogadoRechazar.Visible = false;
+//        return;
+//    }
 
-    //    if (RblAbogado.SelectedValue == "0")
-    //    {
-    //        MostrarMensage("Por favor seleccione un abogado.");
-    //        return;
-    //    }
+//    if (RblAbogado.SelectedValue == "0")
+//    {
+//        MostrarMensage("Por favor seleccione un abogado.");
+//        return;
+//    }
 
-    //    int result = DataAcces.UpdSolicitudAsignado(solicitudId, Convert.ToInt32(RblAbogado.SelectedValue));
-    //    if (result > 0)
-    //    {
-    //        MostrarMensage("Se ha asignado la solicitud.");
-    //        PanelBotonesAbogado.Visible = false;
-    //        PanelAsignarAbogado.Visible = false;
+//    int result = DataAcces.UpdSolicitudAsignado(solicitudId, Convert.ToInt32(RblAbogado.SelectedValue));
+//    if (result > 0)
+//    {
+//        MostrarMensage("Se ha asignado la solicitud.");
+//        PanelBotonesAbogado.Visible = false;
+//        PanelAsignarAbogado.Visible = false;
 
-    //        switch (result) //status depende si la plantilla es de poderes o contratos
-    //        {
-    //            case 19: lblEstatus.Text = "En Creación";
-    //                break;
-    //            case 20: lblEstatus.Text = "En Proceso";
-    //                break;
-    //        }
-    //    }
+//        switch (result) //status depende si la plantilla es de poderes o contratos
+//        {
+//            case 19: lblEstatus.Text = "En Creación";
+//                break;
+//            case 20: lblEstatus.Text = "En Proceso";
+//                break;
+//        }
+//    }
 
-    //    else
-    //    {
-    //        MostrarMensage("Ocurrió un problema al intentar asignar la solicitud.");
-    //    }
-    //}
+//    else
+//    {
+//        MostrarMensage("Ocurrió un problema al intentar asignar la solicitud.");
+//    }
+//}
 
-    // ***** End disabled code ***** //
+// ***** End disabled code ***** //
 
-    //private void RechazarSolicitudJuridico(int idStatus, int solicitudId)
-    //{
-    //    //funcion boton rechazar solicitud
+//private void RechazarSolicitudJuridico(int idStatus, int solicitudId)
+//{
+//    //funcion boton rechazar solicitud
 
-    //    if (DataAcces.UpdSolicitudStatusId(solicitudId, idStatus))
-    //    {
-    //        if (idStatus == 2)
-    //        {
-    //            MostrarMensage("Se ha rechazado la solicitud.");
-    //        }
-    //        if (idStatus == 4)
-    //        {
-    //            MostrarMensage("Se ha asignado la solicitud.");
-    //        }
-    //    }
-    //    //CargarDatos();
-    //}
+//    if (DataAcces.UpdSolicitudStatusId(solicitudId, idStatus))
+//    {
+//        if (idStatus == 2)
+//        {
+//            MostrarMensage("Se ha rechazado la solicitud.");
+//        }
+//        if (idStatus == 4)
+//        {
+//            MostrarMensage("Se ha asignado la solicitud.");
+//        }
+//    }
+//    //CargarDatos();
+//}
 
-    //protected void BtnAsignarAbogado_Click(object sender, EventArgs e)
-    //{
-        //int total = 0;
-        //for (int i = 0; i < ChkAbogado.Items.Count; i++)
-        //{
-        //    if (ChkAbogado.Items[i].Selected)
-        //    {
-        //        total += 1;
+//protected void BtnAsignarAbogado_Click(object sender, EventArgs e)
+//{
+//int total = 0;
+//for (int i = 0; i < ChkAbogado.Items.Count; i++)
+//{
+//    if (ChkAbogado.Items[i].Selected)
+//    {
+//        total += 1;
 
-        //    }
-        //}
+//    }
+//}
 
-        //if (total > 1)
-        //{
-        //    MostrarMensage("solo debe de seleccionar un Abogado");
-        //}
-        //else
-        //{
-        //    if (total == 0)
-        //    {
-        //        MostrarMensage("solo debe de seleccionar a un Abogado");
-        //    }
-        //    else
-        //    { 
-        //int id = Convert.ToInt32(ChkAbogado.Items[1].Value.ToString());
-        //RechazarSolicitudJuridico(4, solicitudId);
-        //ActualizarAsignado(id, solicitudId);
-        ////}
+//if (total > 1)
+//{
+//    MostrarMensage("solo debe de seleccionar un Abogado");
+//}
+//else
+//{
+//    if (total == 0)
+//    {
+//        MostrarMensage("solo debe de seleccionar a un Abogado");
+//    }
+//    else
+//    { 
+//int id = Convert.ToInt32(ChkAbogado.Items[1].Value.ToString());
+//RechazarSolicitudJuridico(4, solicitudId);
+//ActualizarAsignado(id, solicitudId);
+////}
 
-        //}
-        //CargarDatos();
-    //}
-   
+//}
+//CargarDatos();
+//}
+
