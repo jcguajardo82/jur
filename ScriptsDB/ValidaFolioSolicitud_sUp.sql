@@ -1,17 +1,5 @@
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ================================================
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.ValidaFolioSolicitud_sUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.ValidaFolioSolicitud_sUp
 GO
 -- =============================================
 -- Author:		P. Castillo
@@ -33,4 +21,6 @@ BEGIN
 	WHERE [S].[Folio] + '/' + (CASE WHEN Consecutivo < 10 THEN '0'+CONVERT(char(1),Consecutivo) ELSE CONVERT(char(2),Consecutivo) END) + '/' + CONVERT(varchar(4),DATEPART(year,[S].[FechaCreacion]))  = @folio 
 
 END
+GO
+GRANT EXECUTE ON OBJECT::dbo.ValidaFolioSolicitud_sUp TO produccion;
 GO

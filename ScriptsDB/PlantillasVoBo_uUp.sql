@@ -1,7 +1,5 @@
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.PlantillasVoBo_uUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.PlantillasVoBo_uUp
 GO
 -- =============================================
 -- Author:		P. Castillo
@@ -22,4 +20,7 @@ BEGIN
 	WHERE Id_PlantillaJuridica=@Id_PlantillaJuridica
     
 END
+GO
+
+GRANT EXECUTE ON OBJECT::dbo.PlantillasVoBo_uUp TO produccion;
 GO

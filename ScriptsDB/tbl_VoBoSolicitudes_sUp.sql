@@ -1,11 +1,5 @@
-USE [AdminJurProdDB]
-GO
-
-/****** Object:  StoredProcedure [dbo].[tbl_VoBoSolicitudes_iUp]    Script Date: 16/05/2022 02:29:49 p. m. ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.tbl_VoBoSolicitudes_sUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.tbl_VoBoSolicitudes_sUp
 GO
 
 -- =============================================
@@ -37,4 +31,5 @@ BEGIN
 END
 GO
 
-
+GRANT EXECUTE ON OBJECT::dbo.tbl_VoBoSolicitudes_sUp TO produccion;
+GO

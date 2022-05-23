@@ -1,14 +1,12 @@
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.tbl_VoBoSolicitudesRetroById_sUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.tbl_VoBoSolicitudesRetroById_sUp
 GO
 -- =============================================
 -- Author:		Pedro Castillo
 -- Create date: 13-05-2022,
 -- Description: Consulta las retro por folio de solicitud,
 -- =============================================
-CREATE PROCEDURE tbl_VoBoSolicitudesRetroById_sUp
+CREATE PROCEDURE dbo.tbl_VoBoSolicitudesRetroById_sUp
 	-- Add the parameters for the stored procedure here
 		@Id_voBoSolRetro int
 		
@@ -31,4 +29,6 @@ BEGIN
 
 
 END
+GO
+GRANT EXECUTE ON OBJECT::dbo.tbl_VoBoSolicitudesRetroById_sUp TO produccion;
 GO

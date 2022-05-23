@@ -1,17 +1,5 @@
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ================================================
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.ValidaSolicitudVoboPlantilla_sUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.ValidaSolicitudVoboPlantilla_sUp
 GO
 -- =============================================
 -- Author:		Pedro Castillo
@@ -69,4 +57,7 @@ BEGIN
 
 	SELECT @Message as [Message]
 END
+GO
+
+GRANT EXECUTE ON OBJECT::dbo.ValidaSolicitudVoboPlantilla_sUp TO produccion;
 GO

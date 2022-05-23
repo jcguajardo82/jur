@@ -1,3 +1,6 @@
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.SelSolicitudUsuario') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.SelSolicitudUsuario
+GO
 -- =======================================================================================================  
 -- Author:  Jose Garcia  
 -- Create date: Dec/12/2014  
@@ -6,7 +9,7 @@
 -- Modified:    Jan/12/2015 (Humberto Sanchez)  -- Se agrega al resultado las columnas Correo,EstatusAutPrev
 --				asi como un union a la tabla de VoBo
 -- =======================================================================================================  
-ALTER PROCEDURE [dbo].[SelSolicitudUsuario]  
+CREATE PROCEDURE [dbo].[SelSolicitudUsuario]  
  @UsuarioId INT  
   
 AS  
@@ -98,3 +101,5 @@ LEFT JOIN  [dbo].[tbl_Solicitud] [S]
 
 END  
   
+GRANT EXECUTE ON OBJECT::dbo.SelSolicitudUsuario TO produccion;
+GO

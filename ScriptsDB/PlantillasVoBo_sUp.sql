@@ -1,8 +1,7 @@
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.PlantillasVoBo_sUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.PlantillasVoBo_sUp
+GO
 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		P. Castillo
 -- Create date: 11/05/2022
@@ -27,4 +26,7 @@ BEGIN
 	WHERE A.activo=1
 
 END
+GO
+
+GRANT EXECUTE ON OBJECT::dbo.PlantillasVoBo_sUp TO produccion;
 GO

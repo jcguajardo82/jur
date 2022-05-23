@@ -1,14 +1,12 @@
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.tbl_VoBoSolicitudesRetro_sUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.tbl_VoBoSolicitudesRetro_sUp
 GO
 -- =============================================
 -- Author:		Pedro Castillo
 -- Create date: 13-05-2022,
 -- Description: crea los registros para la retroalimentacion de las solicitudes,
 -- =============================================
-CREATE PROCEDURE tbl_VoBoSolicitudesRetro_sUp
+CREATE PROCEDURE dbo.tbl_VoBoSolicitudesRetro_sUp
 	-- Add the parameters for the stored procedure here
 		@Id_voBoSol int
 		,@correo varchar(50)		           
@@ -44,4 +42,6 @@ INSERT INTO [dbo].[tbl_VoBoSolicitudesRetro]
 
 
 END
+GO
+GRANT EXECUTE ON OBJECT::dbo.tbl_VoBoSolicitudesRetro_sUp TO produccion;
 GO

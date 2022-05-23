@@ -1,16 +1,14 @@
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.tbl_VoBoSolicitudes_iUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.tbl_VoBoSolicitudes_iUp
+GO
 
--- ================================================
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 -- =============================================
 -- Author:		P. Castillo
 -- Create date: 12-05-2022
 -- Description:	Da de alta las solicitudes de visto bueno 
 -- tbl_VoBoSolicitudes_iUp 18,'123','1@s.com','2@s.com','3@s.com','4@s.com','5@s.com','1'
 -- =============================================
-ALTER PROCEDURE dbo.tbl_VoBoSolicitudes_iUp
+CREATE PROCEDURE dbo.tbl_VoBoSolicitudes_iUp
 		@idSolicitud int
 		,@comentarios varchar(200)
 		,@correo1 varchar(50)
@@ -51,4 +49,7 @@ INSERT INTO [dbo].[tbl_VoBoSolicitudes]
 
 	 SELECT @@IDENTITY   as Id_voBoSol
 END
+GO
+
+GRANT EXECUTE ON OBJECT::dbo.tbl_VoBoSolicitudes_iUp TO produccion;
 GO
