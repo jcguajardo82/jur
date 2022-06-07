@@ -4226,7 +4226,206 @@ namespace DACJuridico
 
                     return mensaje;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+        #endregion
+
+
+        #region Solicitudes Temporal
+
+
+        public int tbl_SolicitudesTemp_iUp(int idUsuario, int idTipoSolicitud, int idPlantilla)
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                SqlCommand cmd;
+
+                cmd = new SqlCommand("tbl_SolicitudesTemp_iUp", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("@idUsuario", idUsuario) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@idTipoSolicitud", idTipoSolicitud) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@idPlantilla", idPlantilla) { DbType = System.Data.DbType.Int32 });
+
+
+                try
+                {
+                    conn.Open();
+
+                    int verificator = 0;
+                    verificator = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    conn.Close();
+
+                    return verificator;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+                finally
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Dispose();
+                    }
+                }
+            }
+        }
+
+
+        public int tbl_EtiquetasTemp_iUp(int idUsuario, int idTipoSolicitud, int id_etiquetas, int idPlantilla, int id_PlantillaJuridica, string respuesta)
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                SqlCommand cmd;
+
+                cmd = new SqlCommand("tbl_EtiquetasTemp_iUp", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("@idUsuario", idUsuario) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@idTipoSolicitud", idTipoSolicitud) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@idPlantilla", idPlantilla) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@id_etiquetas", id_etiquetas) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@id_PlantillaJuridica", id_PlantillaJuridica) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@respuesta", respuesta) { DbType = System.Data.DbType.String });
+
+
+                try
+                {
+                    conn.Open();
+
+                    int verificator = 0;
+                    verificator = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    conn.Close();
+
+                    return verificator;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+                finally
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Dispose();
+                    }
+                }
+            }
+        }
+
+
+        public int tbl_EtiquetasTemp_uUp(int idUsuario, int idTipoSolicitud, int id_etiquetas, int idPlantilla, int id_PlantillaJuridica, string respuesta)
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                SqlCommand cmd;
+
+                cmd = new SqlCommand("tbl_EtiquetasTemp_uUp", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("@idUsuario", idUsuario) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@idTipoSolicitud", idTipoSolicitud) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@idPlantilla", idPlantilla) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@id_etiquetas", id_etiquetas) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@id_PlantillaJuridica", id_PlantillaJuridica) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@respuesta", respuesta) { DbType = System.Data.DbType.String });
+
+
+                try
+                {
+                    conn.Open();
+
+                    int verificator = 0;
+                    verificator = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    conn.Close();
+
+                    return verificator;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+                finally
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Dispose();
+                    }
+                }
+            }
+        }
+
+        public string tbl_EtiquetasTemp_sUp(int idUsuario, int idTipoSolicitud, int id_etiquetas, int idPlantilla, int id_PlantillaJuridica)
+        {
+            string verificador = string.Empty;
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                List<PlantillasVoBo> list = new List<PlantillasVoBo>();
+
+                comm = new SqlCommand("tbl_EtiquetasTemp_sUp", con);
+
+                comm.Parameters.Add(new SqlParameter("@idUsuario", idUsuario) { DbType = System.Data.DbType.Int32 });
+                comm.Parameters.Add(new SqlParameter("@idTipoSolicitud", idTipoSolicitud) { DbType = System.Data.DbType.Int32 });
+                comm.Parameters.Add(new SqlParameter("@idPlantilla", idPlantilla) { DbType = System.Data.DbType.Int32 });
+                comm.Parameters.Add(new SqlParameter("@id_etiquetas", id_etiquetas) { DbType = System.Data.DbType.Int32 });
+                comm.Parameters.Add(new SqlParameter("@id_PlantillaJuridica", id_PlantillaJuridica) { DbType = System.Data.DbType.Int32 });
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        verificador = (string)reader["respuesta"];
+                    }
+
+                    con.Close();
+
+                    return verificador;
+                }
+                catch
                 {
                     return null;
                 }

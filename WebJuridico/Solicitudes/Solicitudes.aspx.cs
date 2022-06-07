@@ -207,19 +207,38 @@ public partial class Solicitudes_Solicitudes : PaginaBase
     private void CargarDatosPlantilla(int tipo)
     {
         Plantillas plantilla = null;
+        int idPlantillaJuridica = 0;
 
-        if (tipo == 1) // 1 = Poderes
+        switch (tipo)
         {
-            plantilla = DataAcces.SelPlantillaSolicitudes(Convert.ToInt32(ddlPoder.SelectedValue));
+            case 1:// 1 = Poderes
+                idPlantillaJuridica = Convert.ToInt32(ddlPoder.SelectedValue);
+                break;
+            case 2:// 2 = Contratos
+                idPlantillaJuridica = Convert.ToInt32(ddlContrato.SelectedValue);
+                break;
+            case 3: // 2 = Contratos
+                idPlantillaJuridica = Convert.ToInt32(ddlServiciosNot.SelectedValue);
+                break;
+            default:
+                break;
         }
-        if (tipo == 2) // 2 = Contratos
-        {
-            plantilla = DataAcces.SelPlantillaSolicitudes(Convert.ToInt32(ddlContrato.SelectedValue));
-        }
-        if (tipo == 3) // 2 = Contratos
-        {
-            plantilla = DataAcces.SelPlantillaSolicitudes(Convert.ToInt32(ddlServiciosNot.SelectedValue));
-        }
+
+
+        //if (tipo == 1) // 1 = Poderes
+        //{         
+        //    plantilla = DataAcces.SelPlantillaSolicitudes(Convert.ToInt32(ddlPoder.SelectedValue));
+        //}
+        //if (tipo == 2) // 2 = Contratos
+        //{          
+        //    plantilla = DataAcces.SelPlantillaSolicitudes(Convert.ToInt32(ddlContrato.SelectedValue));
+        //}
+        //if (tipo == 3) // 2 = Contratos
+        //{        
+        //    plantilla = DataAcces.SelPlantillaSolicitudes(Convert.ToInt32(ddlServiciosNot.SelectedValue));
+        //}
+
+        plantilla = DataAcces.SelPlantillaSolicitudes(idPlantillaJuridica);
 
         if (plantilla == null)
         {
@@ -242,6 +261,10 @@ public partial class Solicitudes_Solicitudes : PaginaBase
         CargarTipoArchivo(tipo);
 
         //Session["plantilla"] = plantilla;
+
+
+
+        GenerarBorrador(tipo, idPlantillaJuridica, plantilla.Etiquetas);
     }
 
     public void CargarArchivo()
@@ -339,7 +362,8 @@ public partial class Solicitudes_Solicitudes : PaginaBase
 
             int in_IdPlantilla = 1;
 
-            switch (tipo) {
+            switch (tipo)
+            {
 
                 case 1:
                     in_IdPlantilla = Convert.ToInt32(ddlPoder.SelectedValue);
@@ -561,10 +585,87 @@ public partial class Solicitudes_Solicitudes : PaginaBase
             e.Row.Cells[2].ToolTip = "Descargar El Archivo";
         }
     }
+    protected void grvEtiquetas_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            var txt = (TextBox)e.Row.FindControl("txtValorEtiqueta");
+            var etiqueta = (Label)e.Row.FindControl("lblEtiquetaId");
+            int tipo = Convert.ToInt32(Request.QueryString["tipo"]);
+            int idPlantillaJuridica = 0;
+
+
+            switch (tipo)
+            {
+                case 1:// 1 = Poderes
+                    idPlantillaJuridica = Convert.ToInt32(ddlPoder.SelectedValue);
+                    break;
+                case 2:// 2 = Contratos
+                    idPlantillaJuridica = Convert.ToInt32(ddlContrato.SelectedValue);
+                    break;
+                case 3: // 2 = Contratos
+                    idPlantillaJuridica = Convert.ToInt32(ddlServiciosNot.SelectedValue);
+                    break;
+                default:
+                    break;
+            }
+
+
+            txt.Text = DataAcces.tbl_EtiquetasTemp_sUp(Convert.ToInt32(Session["idUsuario"]), tipo, int.Parse(etiqueta.Text), idPlantillaJuridica, 0);
+
+        }
+    }
+
+    protected void txtValorEtiqueta_TextChanged(object sender, EventArgs e)
+    {
+        TextBox tb = (TextBox)sender;
+        GridViewRow gvr = (GridViewRow)tb.Parent.Parent;
+        int rowindex = gvr.RowIndex;
+
+        var etiqueta = (Label)grvEtiquetas.Rows[rowindex].FindControl("lblEtiquetaId");
+
+
+        int tipo = Convert.ToInt32(Request.QueryString["tipo"]);
+        int idPlantillaJuridica = 0;
+        switch (tipo)
+        {
+            case 1:// 1 = Poderes
+                idPlantillaJuridica = Convert.ToInt32(ddlPoder.SelectedValue);
+                break;
+            case 2:// 2 = Contratos
+                idPlantillaJuridica = Convert.ToInt32(ddlContrato.SelectedValue);
+                break;
+            case 3: // 2 = Contratos
+                idPlantillaJuridica = Convert.ToInt32(ddlServiciosNot.SelectedValue);
+                break;
+            default:
+                break;
+        }
+
+
+        DataAcces.tbl_EtiquetasTemp_uUp(Convert.ToInt32(Session["idUsuario"]), tipo, int.Parse(etiqueta.Text), idPlantillaJuridica, 0, tb.Text);
+
+    }
+
+    protected void GenerarBorrador(int tipo, int idPlantilla, List<tbl_Etiquetas> etiquetas)
+    {
+
+        int idUsuario = Convert.ToInt32(Session["idUsuario"]);
+        DataAcces.tbl_SolicitudesTemp_iUp(idUsuario, tipo, idPlantilla);
+
+        foreach (tbl_Etiquetas item in etiquetas)
+        {
+            DataAcces.tbl_EtiquetasTemp_iUp(idUsuario, tipo, item.id_etiquetas, idPlantilla, item.id_PlantillaJuridica, string.Empty);
+        }
+    }
 
     #endregion
 
     #region Propiedades
 
     #endregion
+
+
+
+
 }

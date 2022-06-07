@@ -94,7 +94,8 @@
                                                         GridLines="None"
                                                         ShowHeader="False" 
                                                         CellPadding="2" 
-                                                        ForeColor="#000000">
+                                                        ForeColor="#000000"
+                                                        OnRowDataBound="grvEtiquetas_RowDataBound">
                                                         <AlternatingRowStyle BackColor="White" />
                                                         <Columns>
 
@@ -118,7 +119,7 @@
 
                                                             <asp:TemplateField ControlStyle-Width="215px">
                                                                 <ItemTemplate>
-                                                                    <asp:TextBox runat="server" CssClass="textboxGeneral" ID="txtValorEtiqueta" Enabled='<%# Eval("Pregunta").ToString().Trim().StartsWith("Nota")? false : true %>' Font-Size="12px" Height="80px" Width="240px" TextMode="MultiLine" onchange="checkMaxLength(this,1500)" onkeydown="checkMaxLength(this,1500)" onkeyup="checkMaxLength(this,1500)"></asp:TextBox>
+                                                                    <asp:TextBox runat="server" CssClass="textboxGeneral"   OnTextChanged="txtValorEtiqueta_TextChanged" AutoPostBack="true" ID="txtValorEtiqueta" Enabled='<%# Eval("Pregunta").ToString().Trim().StartsWith("Nota")? false : true %>' Font-Size="12px" Height="80px" Width="240px" TextMode="MultiLine" onchange="checkMaxLength(this,1500)" onkeydown="checkMaxLength(this,1500)" onkeyup="checkMaxLength(this,1500)"></asp:TextBox>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
 
@@ -126,6 +127,7 @@
                                                         <PagerStyle BackColor="White" ForeColor="White" HorizontalAlign="Center" />
                                                         <RowStyle BackColor="White" />
                                                         <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+                                                        
                                                     </asp:GridView>
 
                                                 </td>
