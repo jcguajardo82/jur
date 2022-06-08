@@ -60,12 +60,12 @@ C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Debug\DACJuridico.csp
 C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Debug\DACJuridico.csproj.ResolveComReference.cache
 C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Debug\DACJuridico.dll
 C:\Proyectos\Workspace\extra\Juridico\Code\DACJuridico\obj\Debug\DACJuridico.pdb
+C:\Proyectos\Juridico\DACJuridico\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Proyectos\Juridico\DACJuridico\bin\Debug\DACJuridico.dll
 C:\Proyectos\Juridico\DACJuridico\bin\Debug\DACJuridico.pdb
 C:\Proyectos\Juridico\DACJuridico\bin\Debug\DocumentFormat.OpenXml.dll
 C:\Proyectos\Juridico\DACJuridico\bin\Debug\Entidades.dll
 C:\Proyectos\Juridico\DACJuridico\bin\Debug\Entidades.pdb
-C:\Proyectos\Juridico\DACJuridico\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Proyectos\Juridico\DACJuridico\obj\Debug\DACJuridico.csprojAssemblyReference.cache
 C:\Proyectos\Juridico\DACJuridico\obj\Debug\DACJuridico.csproj.ResolveComReference.cache
 C:\Proyectos\Juridico\DACJuridico\obj\Debug\DACJuridico.csproj.CoreCompileInputs.cache

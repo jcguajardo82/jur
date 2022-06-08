@@ -29,7 +29,6 @@ C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Debug\Entidades.pdb
 C:\Proyectos\Workspace\extra\Juridico\Code\Entidades\obj\Debug\Entidades.csprojResolveAssemblyReference.cache
 C:\Proyectos\Juridico\Entidades\bin\Debug\Entidades.dll
 C:\Proyectos\Juridico\Entidades\bin\Debug\Entidades.pdb
-C:\Proyectos\Juridico\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
 C:\Proyectos\Juridico\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Proyectos\Juridico\Entidades\obj\Debug\Entidades.dll
 C:\Proyectos\Juridico\Entidades\obj\Debug\Entidades.pdb
