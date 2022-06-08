@@ -1,3 +1,7 @@
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.tbl_EtiquetasTemp_sUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.tbl_EtiquetasTemp_sUp
+GO
+
 
 -- =============================================
 -- Author:		Pedro Castillo
@@ -29,4 +33,6 @@ BEGIN
 
 
 END
+GO
+GRANT EXECUTE ON OBJECT::dbo.tbl_EtiquetasTemp_sUp TO produccion;
 GO

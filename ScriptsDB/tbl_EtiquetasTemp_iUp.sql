@@ -1,24 +1,14 @@
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ================================================
-SET ANSI_NULLS ON
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.tbl_EtiquetasTemp_iUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.tbl_EtiquetasTemp_iUp
 GO
-SET QUOTED_IDENTIFIER ON
-GO
+
+
 -- =============================================
 -- Author:		Pedro Castillo
 -- Create date: 01-06-2022
 -- Description:	Registra las respuestas para la plantilla
 -- =============================================
-CREATE PROCEDURE tbl_EtiquetasTemp_iUp 
+CREATE PROCEDURE dbo.tbl_EtiquetasTemp_iUp 
 	-- Add the parameters for the stored procedure here
 	@idUsuario int
 	,@idTipoSolicitud int
@@ -61,4 +51,7 @@ BEGIN
 END
 
 END
+GO
+
+GRANT EXECUTE ON OBJECT::dbo.tbl_EtiquetasTemp_iUp TO produccion;
 GO

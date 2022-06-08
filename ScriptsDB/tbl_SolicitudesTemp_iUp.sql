@@ -1,3 +1,7 @@
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('dbo.tbl_SolicitudesTemp_iUp') and sysstat & 0xf = 4)
+DROP PROCEDURE dbo.tbl_SolicitudesTemp_iUp
+GO
+
 
 -- =============================================
 -- Author:		Pedro Castillo
@@ -36,4 +40,7 @@ IF (NOT EXISTS(SELECT * FROM[dbo].[tbl_SolicitudesTemp] WHERE
 
 
 END
+GO
+
+GRANT EXECUTE ON OBJECT::dbo.tbl_SolicitudesTemp_iUp TO produccion;
 GO
