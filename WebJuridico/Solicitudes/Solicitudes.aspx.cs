@@ -3,6 +3,7 @@ using Entidades;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
@@ -252,8 +253,8 @@ public partial class Solicitudes_Solicitudes : PaginaBase
         grvEtiquetas.DataSource = plantilla.Etiquetas;
         grvEtiquetas.DataBind();
 
-        grvDocumentos.DataSource = new List<ArchivoSolicitud>();
-        grvDocumentos.DataBind();
+        //grvDocumentos.DataSource = new List<ArchivoSolicitud>();
+
 
         lblDescValue.Text = plantilla.Plantilla.Descripcion;
         lblNombrePlantillaValue.Text = plantilla.Plantilla.Nombre;
@@ -262,9 +263,12 @@ public partial class Solicitudes_Solicitudes : PaginaBase
 
         //Session["plantilla"] = plantilla;
 
-
-
         GenerarBorrador(tipo, idPlantillaJuridica, plantilla.Etiquetas);
+
+        var archivos = DataAcces.SelArchivoSolicitudTemp(Convert.ToInt32(Session["idUsuario"]), tipo, idPlantillaJuridica);
+        Session["archivos"] = archivos;
+        grvDocumentos.DataSource = archivos;
+        grvDocumentos.DataBind();
     }
 
     public void CargarArchivo()
@@ -307,14 +311,27 @@ public partial class Solicitudes_Solicitudes : PaginaBase
                         }
                     }
 
-                    archivos.Add(new ArchivoSolicitud()
-                    {
-                        Nombre = fi.Name,
-                        IdTipoDocumento = Convert.ToInt32(ddlTipoDocumento.SelectedValue),
-                        TipoDocumento = ddlTipoDocumento.SelectedItem.Text,
-                        Archivo = fluDocumento.FileBytes
-                        //Ruta = string.Empty
-                    });
+                    var archivo = new ArchivoSolicitud();
+
+                    archivo.Nombre = fi.Name;
+                    archivo.IdTipoDocumento = Convert.ToInt32(ddlTipoDocumento.SelectedValue);
+                    archivo.TipoDocumento = ddlTipoDocumento.SelectedItem.Text;
+                    archivo.Archivo = fluDocumento.FileBytes;
+
+                    archivos.Add(archivo);
+                    //archivos.Add(new ArchivoSolicitud()
+                    //{
+                    //    Nombre = fi.Name,
+                    //    IdTipoDocumento = Convert.ToInt32(ddlTipoDocumento.SelectedValue),
+                    //    TipoDocumento = ddlTipoDocumento.SelectedItem.Text,
+                    //    Archivo = fluDocumento.FileBytes
+                    //    //Ruta = string.Empty
+                    //});
+
+
+                    InsArchivoTemp(archivo);
+
+
 
                     grvDocumentos.DataSource = archivos;
                     grvDocumentos.DataBind();
@@ -338,6 +355,52 @@ public partial class Solicitudes_Solicitudes : PaginaBase
             errorMsg.Text = ex.Message;
         }
     }
+
+
+    private void InsArchivoTemp(ArchivoSolicitud archivo)
+    {
+        int idPlantillaJuridica = 0;
+        int tipo = Convert.ToInt32(Request.QueryString["tipo"]);
+        switch (tipo)
+        {
+            case 1:// 1 = Poderes
+                idPlantillaJuridica = Convert.ToInt32(ddlPoder.SelectedValue);
+                break;
+            case 2:// 2 = Contratos
+                idPlantillaJuridica = Convert.ToInt32(ddlContrato.SelectedValue);
+                break;
+            case 3: // 2 = Contratos
+                idPlantillaJuridica = Convert.ToInt32(ddlServiciosNot.SelectedValue);
+                break;
+            default:
+                break;
+        }
+        DataAcces.InsArchivoSolicitudTemp(archivo, Convert.ToInt32(Session["idUsuario"]), tipo, idPlantillaJuridica);
+    }
+
+    private void DelArchivoTemp(ArchivoSolicitud archivo)
+    {
+        int idPlantillaJuridica = 0;
+        int tipo = Convert.ToInt32(Request.QueryString["tipo"]);
+        switch (tipo)
+        {
+            case 1:// 1 = Poderes
+                idPlantillaJuridica = Convert.ToInt32(ddlPoder.SelectedValue);
+                break;
+            case 2:// 2 = Contratos
+                idPlantillaJuridica = Convert.ToInt32(ddlContrato.SelectedValue);
+                break;
+            case 3: // 2 = Contratos
+                idPlantillaJuridica = Convert.ToInt32(ddlServiciosNot.SelectedValue);
+                break;
+            default:
+                break;
+        }
+        DataAcces.DelArchivoSolicitudTemp(archivo, Convert.ToInt32(Session["idUsuario"]), tipo, idPlantillaJuridica);
+    }
+
+
+
 
     public void CrearSolicitud(int tipo)
     {
@@ -424,6 +487,8 @@ public partial class Solicitudes_Solicitudes : PaginaBase
 
             if (res)
             {
+                DataAcces.tbl_SolicitudesTemp_dUp(Convert.ToInt32(Session["idUsuario"]), tipo, in_IdPlantilla);
+
                 MostrarMensaje(
                 String.Format("Folio asignado: {0}/{1}/{2}. La solicitud se ha creado con éxito. Consulta en tu opción del módulo \"<a href=\"/Solicitudes/Consultar.aspx\">Mis Solicitudes</a>\" para darle el seguimiento correspondiente",
                 Folio, Consecutivo, DateTime.Today.Year.ToString())
@@ -539,8 +604,13 @@ public partial class Solicitudes_Solicitudes : PaginaBase
                             TipoDocumento = ar.TipoDocumento
                         });
                     }
+                   
                 }
             }
+
+            var artoDel = archivos.Where(x => x.Nombre == nombreArchivo).FirstOrDefault();
+            DelArchivoTemp(artoDel);
+
 
             grvDocumentos.DataSource = archivos_n;
             grvDocumentos.DataBind();

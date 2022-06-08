@@ -4297,6 +4297,49 @@ namespace DACJuridico
         }
 
 
+        public int tbl_SolicitudesTemp_dUp(int idUsuario, int idTipoSolicitud, int idPlantilla)
+        {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                SqlCommand cmd;
+
+                cmd = new SqlCommand("tbl_SolicitudesTemp_dUp", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("@idUsuario", idUsuario) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@idTipoSolicitud", idTipoSolicitud) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@idPlantilla", idPlantilla) { DbType = System.Data.DbType.Int32 });
+
+
+                try
+                {
+                    conn.Open();
+
+                    int verificator = 0;
+                    verificator = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    conn.Close();
+
+                    return verificator;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+                finally
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Dispose();
+                    }
+                }
+            }
+        }
+
         public int tbl_EtiquetasTemp_iUp(int idUsuario, int idTipoSolicitud, int id_etiquetas, int idPlantilla, int id_PlantillaJuridica, string respuesta)
         {
             using (SqlConnection conn = new SqlConnection(conStr))
@@ -4426,6 +4469,175 @@ namespace DACJuridico
                     return verificador;
                 }
                 catch
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+
+        public int InsArchivoSolicitudTemp(ArchivoSolicitud archivo, int idUsuario, int idTipoSolicitud, int idPlantilla)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+
+
+                comm = new SqlCommand("InsArchivoSolicitudTemp", con);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.AddRange(new SqlParameter[] {
+                    new SqlParameter("idTipoDocumento", archivo.IdTipoDocumento) { DbType = System.Data.DbType.Int32},
+                    new SqlParameter("Archivo", archivo.Archivo) { SqlDbType = System.Data.SqlDbType.VarBinary },
+                    new SqlParameter("Nombre", archivo.Nombre),
+                    new SqlParameter("idUsuario", idUsuario) { DbType = System.Data.DbType.Int32},
+                    new SqlParameter("idTipoSolicitud", idTipoSolicitud) { DbType = System.Data.DbType.Int32} ,
+                    new SqlParameter("idPlantilla", idPlantilla) { DbType = System.Data.DbType.Int32},
+
+                });
+
+
+
+
+                try
+                {
+                    con.Open();
+
+                    int verificator = 0;
+                    verificator = Convert.ToInt32(comm.ExecuteScalar());
+
+                    con.Close();
+
+                    return verificator;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                }
+            }
+        }
+
+        public int DelArchivoSolicitudTemp(ArchivoSolicitud archivo, int idUsuario, int idTipoSolicitud, int idPlantilla)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+
+
+                comm = new SqlCommand("DelArchivoSolicitudTemp", con);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.AddRange(new SqlParameter[] {
+                    new SqlParameter("idTipoDocumento", archivo.IdTipoDocumento) { DbType = System.Data.DbType.Int32},                
+                    new SqlParameter("Nombre", archivo.Nombre),
+                    new SqlParameter("idUsuario", idUsuario) { DbType = System.Data.DbType.Int32},
+                    new SqlParameter("idTipoSolicitud", idTipoSolicitud) { DbType = System.Data.DbType.Int32} ,
+                    new SqlParameter("idPlantilla", idPlantilla) { DbType = System.Data.DbType.Int32},
+
+                });
+
+
+
+
+                try
+                {
+                    con.Open();
+
+                    int verificator = 0;
+                    verificator = Convert.ToInt32(comm.ExecuteScalar());
+
+                    con.Close();
+
+                    return verificator;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                }
+            }
+        }
+
+
+
+        public List<ArchivoSolicitud> SelArchivoSolicitudTemp(int idUsuario, int idTipoSolicitud, int idPlantilla)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                List<ArchivoSolicitud> list = new List<ArchivoSolicitud>();
+
+                comm = new SqlCommand("SelArchivoSolicitudTemp", con);
+                comm.Parameters.AddRange(new SqlParameter[] {               
+                    new SqlParameter("idUsuario", idUsuario) { DbType = System.Data.DbType.Int32},
+                    new SqlParameter("idTipoSolicitud", idTipoSolicitud) { DbType = System.Data.DbType.Int32} ,
+                    new SqlParameter("idPlantilla", idPlantilla) { DbType = System.Data.DbType.Int32},
+
+                });
+
+
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        list.Add(new ArchivoSolicitud()
+                        {
+                            Nombre = (string)reader["Nombre"],
+                            IdTipoDocumento = (int)reader["IdTipoDocumento"],
+                            TipoDocumento = (string)reader["TipoDocumento"],
+                            Archivo = (byte[])reader["Archivo"],
+                            EsNuevo = false
+
+                        });
+                    }
+
+                    con.Close();
+
+                    return list;
+                }
+                catch(Exception ex)
                 {
                     return null;
                 }
