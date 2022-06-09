@@ -19,10 +19,14 @@ BEGIN
     -- Insert statements for procedure here
 
 
-	SELECT  A.*,B.comentarios
-	FROM tbl_VoBoSolicitudesRetro AS A
-	JOIN tbl_VoBoSolicitudes AS B
-		ON B.Id_voBoSol=A.Id_voBoSol 
+ SELECT  A.*,B.comentarios  
+ ,  Folio + '/' + (CASE WHEN Consecutivo < 10 THEN '0'+CONVERT(char(1),Consecutivo) ELSE CONVERT(char(2),Consecutivo) END) + '/' + CONVERT(varchar(4),DATEPART(year,FechaCreacion)) AS FolioCompleto
+  ,S.id_Solicitud
+ FROM tbl_VoBoSolicitudesRetro AS A  
+ JOIN tbl_VoBoSolicitudes AS B  
+  ON B.Id_voBoSol=A.Id_voBoSol   
+ JOIN tbl_Solicitud S 
+	ON S.id_Solicitud =B.idSolicitud
 
 	WHERE Id_voBoSolRetro=@Id_voBoSolRetro
 

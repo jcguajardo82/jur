@@ -4046,7 +4046,9 @@ namespace DACJuridico
                         item.correo = (string)reader["correo"];
                         item.comentariosNegocio = (string)reader["comentariosNegocio"];
                         item.riesgosDestacados = (string)reader["riesgosDestacados"];
+                        item.FolioCompleto = (string)reader["FolioCompleto"];
                         item.id_user = (int)reader["id_user"];
+                        item.id_Solicitud = (int)reader["id_Solicitud"];
                         if (reader["autorizado"] != DBNull.Value)
                         {
                             item.autorizado = (bool?)reader["autorizado"];
@@ -4247,6 +4249,65 @@ namespace DACJuridico
                 }
             }
         }
+
+
+        public List<PlantillasVoBo> GetPlantillasVoboById(int Id_PlantillaJuridica)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                List<PlantillasVoBo> list = new List<PlantillasVoBo>();
+
+                comm = new SqlCommand("tbl_PlantillasJuridicasById_sUp", con);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@Id_PlantillaJuridica", Id_PlantillaJuridica) { DbType = System.Data.DbType.Int32 });
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        list.Add(new PlantillasVoBo()
+                        {
+                            Id_PlantillaJuridica = (int)reader["Id_PlantillaJuridica"],
+                            Nombre = (string)reader["Nombre"],
+                           
+                            voBo = (bool)reader["voBo"]
+
+                        });
+                    }
+
+                    con.Close();
+
+                    return list;
+                }
+                catch
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+
         #endregion
 
 
@@ -4551,7 +4612,7 @@ namespace DACJuridico
                 comm = new SqlCommand("DelArchivoSolicitudTemp", con);
                 comm.CommandType = System.Data.CommandType.StoredProcedure;
                 comm.Parameters.AddRange(new SqlParameter[] {
-                    new SqlParameter("idTipoDocumento", archivo.IdTipoDocumento) { DbType = System.Data.DbType.Int32},                
+                    new SqlParameter("idTipoDocumento", archivo.IdTipoDocumento) { DbType = System.Data.DbType.Int32},
                     new SqlParameter("Nombre", archivo.Nombre),
                     new SqlParameter("idUsuario", idUsuario) { DbType = System.Data.DbType.Int32},
                     new SqlParameter("idTipoSolicitud", idTipoSolicitud) { DbType = System.Data.DbType.Int32} ,
@@ -4602,7 +4663,7 @@ namespace DACJuridico
                 List<ArchivoSolicitud> list = new List<ArchivoSolicitud>();
 
                 comm = new SqlCommand("SelArchivoSolicitudTemp", con);
-                comm.Parameters.AddRange(new SqlParameter[] {               
+                comm.Parameters.AddRange(new SqlParameter[] {
                     new SqlParameter("idUsuario", idUsuario) { DbType = System.Data.DbType.Int32},
                     new SqlParameter("idTipoSolicitud", idTipoSolicitud) { DbType = System.Data.DbType.Int32} ,
                     new SqlParameter("idPlantilla", idPlantilla) { DbType = System.Data.DbType.Int32},
@@ -4637,7 +4698,62 @@ namespace DACJuridico
 
                     return list;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Consulta Plantilla Correo
+        public tbl_PlantillasCorreo GetPlantillaCorreo(int IdPlantillaCorreo)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                tbl_PlantillasCorreo item = new tbl_PlantillasCorreo();
+
+                comm = new SqlCommand("tbl_PlantillasCorreoById_sUp", con);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@IdPlantillaCorreo", IdPlantillaCorreo) { DbType = System.Data.DbType.Int32 });
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        item.IdPlantillaCorreo = (int)reader["IdPlantillaCorreo"];
+                        item.Subject = (string)reader["Subject"];
+                        item.Body = (string)reader["Body"];
+                        //item.Descripcion = (string)reader["Descripcion"];                      
+                    }
+
+                    con.Close();
+
+                    return item;
+                }
+                catch
                 {
                     return null;
                 }
