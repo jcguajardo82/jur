@@ -28,7 +28,8 @@ public partial class Solicitudes_SolicitudVobo : PaginaBase
             PanelSol.Visible = false;
             return;
         }
-        else {
+        else
+        {
             PanelBotonesPrincipales.Visible = true;
         }
 
@@ -68,7 +69,7 @@ public partial class Solicitudes_SolicitudVobo : PaginaBase
                 txtBusqueda.Focus();
                 return;
             }
-          
+
 
             if (txtCorreo1.Text.Trim() != string.Empty)
             {
@@ -139,7 +140,21 @@ public partial class Solicitudes_SolicitudVobo : PaginaBase
 
 
             var archivos = (List<PlantillaArchivo>)Session["lstArchivoPlantilla"];
-            DataAcces.tbl_VoBoSolicitudes_iUp(voBo,archivos,correos);
+            DataAcces.tbl_VoBoSolicitudes_iUp(voBo, archivos, correos);
+
+
+            try
+            {
+                if (!EnvioCorreo.Plantilla4(correos, txtBusqueda.Text, Session["email"].ToString(), txtDesc.Text))
+                {
+                    MostrarMensaje("La solicitud se ha generado con éxito. No se ha podido mandar los correos de notificacion a las áreas correspondientes.");
+                }
+            }
+            catch (Exception)
+            {
+
+                MostrarMensaje("La solicitud se ha generado con éxito. No se ha podido mandar los correos de notificacion a las áreas correspondientes.");
+            }
 
             iniciaControles();
 
@@ -157,7 +172,7 @@ public partial class Solicitudes_SolicitudVobo : PaginaBase
         }
 
         int? verificador = DataAcces.ValidaFolioSolicitud_sUp(txtBusqueda.Text);
-        if ( verificador== 0)
+        if (verificador == 0)
         {
             MostrarMensaje("El folio de la solicitud ingresado, no existe en el sistema.");
             return;

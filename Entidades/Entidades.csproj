@@ -70,6 +70,7 @@
     <Compile Include="tbl_Etiquetas.cs" />
     <Compile Include="Tbl_Menu.cs" />
     <Compile Include="tbl_nperfil.cs" />
+    <Compile Include="tbl_PlantillasCorreo.cs" />
     <Compile Include="tbl_PlantillasJuridicas.cs" />
     <Compile Include="tbl_TipoPlantilla.cs" />
     <Compile Include="tbl_usuario.cs" />

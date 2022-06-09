@@ -489,6 +489,12 @@ public partial class Solicitudes_Solicitudes : PaginaBase
             {
                 DataAcces.tbl_SolicitudesTemp_dUp(Convert.ToInt32(Session["idUsuario"]), tipo, in_IdPlantilla);
 
+
+                if (DataAcces.GetPlantillasVoboById(in_IdPlantilla).FirstOrDefault().voBo) {
+                    EnvioCorreo.Plantilla3(Session["email"].ToString(), sol.Folio, Session["email"].ToString());
+                }
+
+
                 MostrarMensaje(
                 String.Format("Folio asignado: {0}/{1}/{2}. La solicitud se ha creado con éxito. Consulta en tu opción del módulo \"<a href=\"/Solicitudes/Consultar.aspx\">Mis Solicitudes</a>\" para darle el seguimiento correspondiente",
                 Folio, Consecutivo, DateTime.Today.Year.ToString())

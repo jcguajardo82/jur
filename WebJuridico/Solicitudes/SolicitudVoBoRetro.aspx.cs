@@ -85,6 +85,27 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
 
         DataAcces.tbl_VoBoSolicitudesRetro_uUp(solicitud);
 
+        if (aut)
+        {
+            if (!EnvioCorreo.Plantilla5(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio, solicitud.riesgosDestacados))
+            {
+                MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación.");
+            }
+        }
+        else {
+            if (!EnvioCorreo.Plantilla6(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio, solicitud.riesgosDestacados))
+            {
+                MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación.");
+            }
+        }
+
+
+        if (DataAcces.ValidaSolicitudVoboPlantilla_sUp(int.Parse(lblIdSolicitud.Text)).Equals("0"))
+        {
+            EnvioCorreo.Plantilla7(Session["email"].ToString(), lblFolio.Text, Session["email"].ToString());
+        }
+
+
         MostrarMensaje("Operación realizada con éxito.");
 
         iniciaControles();
@@ -107,7 +128,8 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
             txtComentarios.Text = solicitud.comentariosNegocio;
             txtRiesgos.Text = solicitud.riesgosDestacados;
             txtDesc.Text = solicitud.Detalle;
-
+            lblFolio.Text = solicitud.FolioCompleto;
+            lblIdSolicitud.Text = solicitud.id_Solicitud.ToString();
             //if (solicitud.autorizado == null)
             //{
             //    btnAutorizar.Visible = true;

@@ -41,6 +41,8 @@
             <asp:DropDownList runat="server" ID="ddlCorreos" CssClass="textboxGeneral" AutoPostBack="true" OnSelectedIndexChanged="ddlCorreos_SelectedIndexChanged"></asp:DropDownList>
             <asp:Button CssClass="Button" runat="server" Width="130" ID="btnAutorizar" Text="Autorizar" OnClick="btnAutorizar_Click" CommandArgument="1" />
             <asp:Button CssClass="Button" runat="server" Width="130" ID="btnRechazar" Text="Rechazar" OnClick="btnAutorizar_Click"  CommandArgument="0"/>
+            <asp:Label runat="server" ID="lblFolio" CssClass="infoLabel"></asp:Label>
+            <asp:Label runat="server" ID="lblIdSolicitud" Visible="false"></asp:Label>
             <br />
         </div>
     </asp:Panel>

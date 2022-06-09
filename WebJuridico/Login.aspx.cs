@@ -104,6 +104,7 @@ public partial class Login : PaginaBase
                         Session["Perfil"] = reader2["id_nperfil"].ToString();
                         Session["idUsuario"] = reader2["id_usuario"].ToString();
                         Session["PerfilDesc"] = reader2["Descripcion"].ToString();
+                        Session["email"] = reader2["email"].ToString();
                     }
 
                     if (ToInt32_0(Session["Perfil"]) == 0)
@@ -244,6 +245,7 @@ public partial class Login : PaginaBase
                         Session["Perfil"] = reader2["id_nperfil"].ToString();
                         Session["idUsuario"] = reader2["id_usuario"].ToString();
                         Session["PerfilDesc"] = reader2["Descripcion"].ToString();
+                        Session["email"] = reader2["email"].ToString();
                     }
 
                     if (ToInt32_0(Session["Perfil"]) == 0)

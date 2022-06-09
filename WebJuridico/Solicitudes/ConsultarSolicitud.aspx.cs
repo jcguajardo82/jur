@@ -708,14 +708,14 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
 
     private void CargarGridDocumentos(int solicitudId)
     {
-        ConsultaSolicitud sol;
+        //ConsultaSolicitud sol;
 
-        sol = DataAcces.llenadoConsultaSolicitud(solicitudId);
+        //sol = DataAcces.llenadoConsultaSolicitud(solicitudId);
 
-        Session["archivos"] = sol.Archivos;
+        //Session["archivos"] = sol.Archivos;
 
-        grvDocumentos.DataSource = sol.Archivos;
-        grvDocumentos.DataBind();
+        //grvDocumentos.DataSource = sol.Archivos;
+        //grvDocumentos.DataBind();
     }
 
     #endregion
