@@ -494,7 +494,7 @@ public partial class Solicitudes_Solicitudes : PaginaBase
                 {
                     try
                     {
-                        if (!EnvioCorreo.Plantilla3(Session["email"].ToString(), sol.Folio, Session["email"].ToString()))
+                        if (!EnvioCorreo.Plantilla3(Session["email"].ToString(), Folio, Session["email"].ToString()))
                         {
                             MostrarMensaje(
                            String.Format("Folio asignado: {0}/{1}/{2}. La solicitud se ha creado con éxito. Consulta en tu opción del módulo \"<a href=\"/Solicitudes/Consultar.aspx\">Mis Solicitudes</a>\" para darle el seguimiento correspondiente . No se pudo mandar el correo de notificación.",
