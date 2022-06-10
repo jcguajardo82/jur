@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Users.aspx.cs" Inherits="User_Users" MasterPageFile="~/MasterPage.Master" %>
 
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
@@ -14,7 +12,7 @@
 <center>
     <table>
         <tr>
-            <td style="text-align: right; background-color: #D52B1E; font-size: 13px; color:white">
+            <td style="text-align: right; background-color: #D52B1E; font-size: 13px;">
                 <asp:Label ID="Label2" runat="server" Text="Tipo de usuario:"></asp:Label>
             </td>
             <td>
@@ -29,52 +27,28 @@
 
             </td>
         </tr>
-
         <tr>
-           <td style="text-align: right; background-color: #D52B1E; font-size: 13px; color:white">
-                <asp:Label ID="Label3" runat="server" Text="Email de Empleado:"></asp:Label>
+            <td style="text-align: right; background-color: #D52B1E; font-size: 13px;">
+                <asp:Label ID="Label1" runat="server" Text="Número de Empleado:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TxtEmailEmpleado" runat="server" Width="310px"></asp:TextBox>
-            </td>
-            <td>
-                <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" Width="90px" OnClick="BtnBuscar_Click" visible="false"/>
-            </td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: right; background-color: #D52B1E; font-size: 13px; color:white">
-                <asp:Label ID="Label4" runat="server" Text="Password:"></asp:Label>
-            </td>
-            <td>
-                <asp:TextBox ID="txtPassword" runat="server" Width="310px"></asp:TextBox>
+                <asp:TextBox ID="TxtNoEmpleado" runat="server" Width="310px"></asp:TextBox>
         <%--    <asp:RegularExpressionValidator ID="regex1" Display="None" runat="server" ControlToValidate="TxtNoEmpleado" ValidationExpression="[0-9]*\.?[0-9]*[1-9]" Key="NumbersOnly" ErrorMessage="Escribir solo números en Número Empleado" Font-Size="11px" ForeColor="Red" />--%>
             </td>
             <td>
-                
+                <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" Width="90px" OnClick="BtnBuscar_Click" />
             </td>
             <td>
 
             </td>
         </tr>
         <tr>
-            <td style="text-align: right; background-color: #D52B1E; font-size: 13px; color:white">
-                <asp:Label ID="Label5" runat="server" Text="Nombre de Empleado:"></asp:Label>
+            <td style="text-align: right; background-color: #D52B1E; font-size: 13px;">
+                <asp:Label ID="Label3" runat="server" Text="Nombre de Empleado:"></asp:Label>
             </td>
             <td>
                 <asp:TextBox ID="TxtNEmpleado" runat="server" Width="310px"></asp:TextBox>
             </td>
-             <td>
-                
-            </td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            
             <td>
                 <asp:Button ID="BtnGuardar" runat="server" Text="Grabar" Width="90px" OnClick="BtnGuardar_Click" Enabled="False" />
             </td>
@@ -82,7 +56,20 @@
                 <asp:Button ID="BtnLimpiar" runat="server" Text="Limpiar" Width="90px" OnClick="BtnLimpiar_Click" />
             </td>
         </tr>
-        
+<%--        <tr>
+            <td style="text-align: right; background-color: #D52B1E; font-size: 13px;">
+                <asp:Label ID="Label4" runat="server" Text="Email de Empleado:"></asp:Label>
+            </td>
+            <td>--%>
+                <asp:TextBox ID="TxtEmailEmpleado" runat="server" Width="310px" Visible="false"></asp:TextBox>
+         <%--   </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>--%>
     </table>
 
 
@@ -116,8 +103,7 @@
         OnRowDeleting="grvUsuarios_RowDeleting" 
         AllowPaging="True" 
         AllowSorting="True" 
-        OnSorting="grvUsuarios_Sorting"
-        CssClass="../css/JuridicoComponents.css" PagerStyle-CssClass="pgr">
+        OnSorting="grvUsuarios_Sorting">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
 
@@ -145,24 +131,16 @@
                 </ItemTemplate>
             </asp:TemplateField>
 
-            <%--<asp:BoundField DataField="NEmpleado" SortExpression="NEmpleado" HeaderText="No EMPLEADO" ItemStyle-HorizontalAlign="Center" >
-<ItemStyle HorizontalAlign="Center"></ItemStyle>
-            </asp:BoundField>--%>
-            <asp:ButtonField ButtonType="link" CommandName="Nombre" DataTextField="Nombre" HeaderText="NOMBRE DEL EMPLEADO" SortExpression="Nombre" ItemStyle-HorizontalAlign="Left" >
-                <ItemStyle HorizontalAlign="Left"></ItemStyle>
-            </asp:ButtonField>
-            <asp:BoundField DataField="email" SortExpression="NEmpleado" HeaderText="Email EMPLEADO" ItemStyle-HorizontalAlign="Center" >
-                <ItemStyle HorizontalAlign="Center"></ItemStyle>
-            </asp:BoundField>
-            
+            <asp:BoundField DataField="NEmpleado" SortExpression="NEmpleado" HeaderText="No EMPLEADO" ItemStyle-HorizontalAlign="Center" />
+            <asp:ButtonField ButtonType="link" CommandName="Nombre" DataTextField="Nombre" HeaderText="NOMBRE DEL EMPLEADO" SortExpression="Nombre" ItemStyle-HorizontalAlign="Left" />
             <asp:BoundField DataField="PerfilDesc" SortExpression="PerfilDesc" HeaderText="TIPO DE USUARIO" />
             <asp:BoundField Visible="false" DataField="PerfilId" SortExpression="PerfilId" />
             <asp:CommandField ShowDeleteButton="true" />
         </Columns>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="#D52B1E" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#D52B1E" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#edece6" ForeColor="#333333" />
+        <HeaderStyle BackColor="#D52B1E" Font-Bold="True" ForeColor="Black" />
+        <PagerStyle BackColor="#D52B1E" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
         <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
         <SortedAscendingCellStyle BackColor="#FDF5AC" />
         <SortedAscendingHeaderStyle BackColor="#4D0000" />

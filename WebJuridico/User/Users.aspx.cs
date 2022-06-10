@@ -93,11 +93,10 @@ public partial class User_Users : PaginaBase
 
         user = new tbl_usuario()
         {
-            NEmpleado = 0,//ToInt32_0(TxtNoEmpleado.Text),
+            NEmpleado = ToInt32_0(TxtNoEmpleado.Text),
             Nombre = TxtNEmpleado.Text,
             id_nperfil = Convert.ToInt32(DDLTusuario.SelectedValue),
-            Email = TxtEmailEmpleado.Text,
-            pass = txtPassword.Text
+            Email = TxtEmailEmpleado.Text
         };
         if (TxtNEmpleado.Text == "")
         {
@@ -141,12 +140,12 @@ public partial class User_Users : PaginaBase
 
     protected void BtnGuardar_Click(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(TxtEmailEmpleado.Text))//(ToInt32_0(TxtNoEmpleado.Text) == 0)
+        if (ToInt32_0(TxtNoEmpleado.Text) == 0)
         {
             if (DDLTusuario.SelectedValue != "7") // 7 = Otorgante-Testigo
             {
                 MostrarMensaje("No se puede grabar: Capture el número del empleado");
-                TxtEmailEmpleado.Text = "";
+                TxtNoEmpleado.Text = "";
                 return;
             }
         }
@@ -161,23 +160,20 @@ public partial class User_Users : PaginaBase
         BtnGuardar.Enabled = true;
         if (DDLTusuario.SelectedValue == "7")
         {
-            TxtEmailEmpleado.Text = "";
+            TxtNoEmpleado.Text = "";
             TxtNEmpleado.Text = "";
-            //TxtEmailEmpleado.Enabled = false;
-            TxtEmailEmpleado.BackColor = Color.WhiteSmoke;
-
+            TxtNoEmpleado.Enabled = false;
+            TxtNoEmpleado.BackColor = Color.WhiteSmoke;
             TxtNEmpleado.Enabled = true;
             TxtNEmpleado.BackColor = Color.White;
         }
         else
         {
-            TxtEmailEmpleado.Text = "";
+            TxtNoEmpleado.Text = "";
             TxtNEmpleado.Text = "";
-            TxtEmailEmpleado.Enabled = true;
-            TxtEmailEmpleado.BackColor = Color.White;
-
-          
-            //TxtNEmpleado.Enabled = false;
+            TxtNoEmpleado.Enabled = true;
+            TxtNoEmpleado.BackColor = Color.White;
+            TxtNEmpleado.Enabled = false;
             TxtNEmpleado.BackColor = Color.WhiteSmoke;
         }
         if (Convert.ToInt16(DDLTusuario.SelectedValue) == 0)
@@ -196,32 +192,31 @@ public partial class User_Users : PaginaBase
         int numEmpleado;
         int resultId = -1;
 
-        if (string.IsNullOrEmpty(TxtEmailEmpleado.Text))
+        if (string.IsNullOrEmpty(TxtNoEmpleado.Text))
         {
             MostrarMensaje("Debe capturar el numero de empleado.");
             limpiarCampos();
             return;
         }
 
-        if (int.TryParse(TxtEmailEmpleado.Text, out numEmpleado))
+        if (int.TryParse(TxtNoEmpleado.Text, out numEmpleado))
         {
             //buscar usuario en Base de Datos local:
             usuario = DataAcces.GetUser(numEmpleado);
 
             if (usuario == null)
             {
-                //se quita ya que no abra conexion con ESLABON
-                //if (ConfiguradoParaDesarrollo == true)
-                //{
-                //    TxtNEmpleado.Text = "NOMBRE DE PRUEBA DESARROLLO";
-                //    BtnGuardar.Enabled = true;
-                //    return;
-                //}
-                //else
-                //{
-                //    //si no existe en Base de Datos local, buscar en Intelexion (Eslabon):
-                //    usuario = Intelex.GetEslavonUsuario(numEmpleado, ref resultId);
-                //}
+                if (ConfiguradoParaDesarrollo == true)
+                {
+                    TxtNEmpleado.Text = "NOMBRE DE PRUEBA DESARROLLO";
+                    BtnGuardar.Enabled = true;
+                    return;
+                }
+                else
+                {
+                    //si no existe en Base de Datos local, buscar en Intelexion (Eslabon):
+                    usuario = Intelex.GetEslavonUsuario(numEmpleado, ref resultId);
+                }
 
                 if (usuario == null)
                 {
@@ -247,7 +242,7 @@ public partial class User_Users : PaginaBase
         else
         {
             MostrarMensaje("Debe capturar un número válido de empleado.");
-            TxtEmailEmpleado.Text = "";
+            TxtNoEmpleado.Text = "";
         }
     }
 
@@ -257,12 +252,11 @@ public partial class User_Users : PaginaBase
         BtnGuardar.Enabled = false;
         TxtNEmpleado.Text = "";
         TxtNEmpleado.Enabled = true;
-        TxtEmailEmpleado.Enabled = true;
+        TxtNoEmpleado.Enabled = true;
         TxtNEmpleado.BackColor = Color.White;
-        TxtEmailEmpleado.BackColor = Color.White;
+        TxtNoEmpleado.BackColor = Color.White;
+        TxtNoEmpleado.Text = "";
         TxtEmailEmpleado.Text = "";
-        TxtEmailEmpleado.Text = "";
-        txtPassword.Text = "";
     }
 
     #region "Gridview"
@@ -352,7 +346,7 @@ public partial class User_Users : PaginaBase
             GridViewRow row = grvUsuarios.Rows[index];
 
             //copy to numero empleado
-            TxtEmailEmpleado.Text = row.Cells[3].Text;
+            TxtNoEmpleado.Text = row.Cells[3].Text;
 
             if (row.RowType == DataControlRowType.DataRow)
             {
