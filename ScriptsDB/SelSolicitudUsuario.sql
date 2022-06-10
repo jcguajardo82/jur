@@ -46,7 +46,7 @@ BEGIN
  INNER JOIN [dbo].[tbl_usuario] [U] ON [U].[id_usuario] = [S].[id_user]  
   
  WHERE   
-      [S].[id_user] = 1  
+      [S].[id_user] = @UsuarioId 
  --AND  [S].[id_Status] IN (1, 2, 3)  
      AND S.id_Solicitud NOT IN (SELECT idSolicitud FROM tbl_VoBoSolicitudes ) 
     --ORDER BY   
@@ -93,7 +93,7 @@ LEFT JOIN  [dbo].[tbl_Solicitud] [S]
  INNER JOIN [dbo].[tbl_Status] [St] ON [S].[id_Status] = [St].[id_Status]  
  INNER JOIN [dbo].[tbl_usuario] [U] ON [U].[id_usuario] = [S].[id_user]  
   WHERE 
-  [S].[id_user] = 1  
+  [S].[id_user] = @UsuarioId  
  --AND  [S].[id_Status] IN (1, 2, 3)  
      --AND S.id_Solicitud NOT IN (SELECT idSolicitud FROM tbl_VoBoSolicitudes ) 
     ORDER BY   
