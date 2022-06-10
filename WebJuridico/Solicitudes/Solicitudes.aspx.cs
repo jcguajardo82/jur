@@ -490,8 +490,27 @@ public partial class Solicitudes_Solicitudes : PaginaBase
                 DataAcces.tbl_SolicitudesTemp_dUp(Convert.ToInt32(Session["idUsuario"]), tipo, in_IdPlantilla);
 
 
-                if (DataAcces.GetPlantillasVoboById(in_IdPlantilla).FirstOrDefault().voBo) {
-                    EnvioCorreo.Plantilla3(Session["email"].ToString(), sol.Folio, Session["email"].ToString());
+                if (DataAcces.GetPlantillasVoboById(in_IdPlantilla).FirstOrDefault().voBo)
+                {
+                    try
+                    {
+                        if (!EnvioCorreo.Plantilla3(Session["email"].ToString(), sol.Folio, Session["email"].ToString()))
+                        {
+                            MostrarMensaje(
+                           String.Format("Folio asignado: {0}/{1}/{2}. La solicitud se ha creado con éxito. Consulta en tu opción del módulo \"<a href=\"/Solicitudes/Consultar.aspx\">Mis Solicitudes</a>\" para darle el seguimiento correspondiente . No se pudo mandar el correo de notificación.",
+                           Folio, Consecutivo, DateTime.Today.Year.ToString())
+                           );
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        MostrarMensaje(
+                      String.Format("Folio asignado: {0}/{1}/{2}. La solicitud se ha creado con éxito. Consulta en tu opción del módulo \"<a href=\"/Solicitudes/Consultar.aspx\">Mis Solicitudes</a>\" para darle el seguimiento correspondiente . No se pudo mandar el correo de notificación.",
+                      Folio, Consecutivo, DateTime.Today.Year.ToString())
+                      );
+                    }
+
                 }
 
 
@@ -610,7 +629,7 @@ public partial class Solicitudes_Solicitudes : PaginaBase
                             TipoDocumento = ar.TipoDocumento
                         });
                     }
-                   
+
                 }
             }
 

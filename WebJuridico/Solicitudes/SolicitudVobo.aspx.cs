@@ -149,10 +149,11 @@ public partial class Solicitudes_SolicitudVobo : PaginaBase
                 {
                     MostrarMensaje("La solicitud se ha generado con éxito. No se ha podido mandar los correos de notificacion a las áreas correspondientes.");
                 }
-            }
-            catch (Exception)
-            {
 
+
+            }
+            catch (Exception ex)
+            {
                 MostrarMensaje("La solicitud se ha generado con éxito. No se ha podido mandar los correos de notificacion a las áreas correspondientes.");
             }
 

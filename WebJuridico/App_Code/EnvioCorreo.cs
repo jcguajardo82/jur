@@ -19,9 +19,13 @@ public static class EnvioCorreo
     }
     private static void EnviarCorreo(CustomMailMessageDto correo)
     {
-        ServicePointManager.Expect100Continue = true;
-        ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+        string log;
 
+        ServicePointManager.Expect100Continue = true;
+        log = " ServicePointManager.Expect100Continue = true; <br>";
+
+        ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+        log =log + " ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072; <br>";
         Uri apiUrl = new Uri("https://sorianajuridicosendmailqa.azurewebsites.net/api/Sendmail/");
 
         string inputJson = (new JavaScriptSerializer()).Serialize(correo);
@@ -195,7 +199,7 @@ public static class EnvioCorreo
             };
 
 
-            correo.HmlContent = ReplacePieEncabezado(correo.HmlContent);
+            correo.HmlContent = ReplacePieEncabezado(plantilla.Body);
 
 
             correo.MailTo = MailTo;
@@ -214,7 +218,7 @@ public static class EnvioCorreo
     }
     public static bool Plantilla4(List<string> correos, string folio, string senderMail, string detalle)
     {
-        bool success = false;
+        bool success = true;
         try
         {
 
@@ -242,9 +246,9 @@ public static class EnvioCorreo
             }
 
 
-            success = true;
+            //success = true;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
 
             success = false;

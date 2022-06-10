@@ -87,22 +87,51 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
 
         if (aut)
         {
-            if (!EnvioCorreo.Plantilla5(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio, solicitud.riesgosDestacados))
+            try
             {
-                MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación.");
+                if (!EnvioCorreo.Plantilla5(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio, solicitud.riesgosDestacados))
+                {
+                    MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación de autorización.");
+                }
+            }
+            catch (Exception)
+            {
+
+                MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación autorización.");
             }
         }
-        else {
-            if (!EnvioCorreo.Plantilla6(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio, solicitud.riesgosDestacados))
+        else
+        {
+            try
             {
-                MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación.");
+                if (!EnvioCorreo.Plantilla6(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio, solicitud.riesgosDestacados))
+                {
+                    MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación rechazo.");
+                }
             }
+            catch (Exception)
+            {
+
+                MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación de rechazo.");
+            }
+           
         }
 
 
         if (DataAcces.ValidaSolicitudVoboPlantilla_sUp(int.Parse(lblIdSolicitud.Text)).Equals("0"))
         {
-            EnvioCorreo.Plantilla7(Session["email"].ToString(), lblFolio.Text, Session["email"].ToString());
+            try
+            {
+                if (!EnvioCorreo.Plantilla7(Session["email"].ToString(), lblFolio.Text, Session["email"].ToString())) {
+                    MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación de autorización total.");
+                }
+            }
+            catch (Exception)
+            {
+
+                MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación de autorización total.");
+            }
+            
         }
 
 
