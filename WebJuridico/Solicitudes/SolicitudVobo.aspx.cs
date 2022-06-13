@@ -240,15 +240,15 @@ public partial class Solicitudes_SolicitudVobo : PaginaBase
             }
 
             //revisar que sea archivo de office 2007 o superior
-            else if (fi.Extension != ".docx")
-            {
-                MostrarMensaje("Solo se pueden cargar archivos tipo .docx");
-                return;
-            }
+            //else if (fi.Extension != ".docx")
+            //{
+            //    //MostrarMensaje("Solo se pueden cargar archivos tipo .docx");
+            //    //return;
+            //}
 
             else
             {
-                CheckFileIntegrity(FileUpload1.FileBytes);
+               // CheckFileIntegrity(FileUpload1.FileBytes);
 
                 var lstArch = new List<PlantillaArchivo>();
 
