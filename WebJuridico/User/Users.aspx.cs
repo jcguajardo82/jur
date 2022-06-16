@@ -429,4 +429,36 @@ public partial class User_Users : PaginaBase
 
     #endregion
 
+
+    protected void grvUsuarios_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if(e.Row.RowType == DataControlRowType.DataRow)
+        {
+            var ddl = (DropDownList)e.Row.FindControl("ddl_perfil");
+            ddl.DataSource = DataAcces.GetPerfiles();
+
+            ddl.DataTextField = "Nombre";
+            ddl.DataValueField = "id_nperfil";
+            ddl.DataBind();
+            ddl.Items.Insert(0, new ListItem("<Seleccione un Perfil>", "0"));
+
+        }
+    }
+
+
+
+    protected void ddl_perfil_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DropDownList dblist = (DropDownList)sender;
+        var row = dblist.NamingContainer;
+        DropDownList perfilval = (DropDownList)row.FindControl("ddl_perfil");
+
+        
+        string num_empleado = ((Label)row.FindControl("lblIdUsuario")).Text;
+        
+        DataAcces.sp_cambiaPerfilUsuario_pUP( int.Parse(num_empleado), int.Parse(perfilval.Text));
+
+        Session["UsuariosGridData"] = null;
+        CargarGrid();
+    }
 }

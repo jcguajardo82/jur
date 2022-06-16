@@ -89,7 +89,8 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
         {
             try
             {
-                if (!EnvioCorreo.Plantilla5(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio, solicitud.riesgosDestacados))
+                if (!EnvioCorreo.Plantilla5(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio
+                    , solicitud.riesgosDestacados,int.Parse(lblIdSolicitud.Text)))
                 {
                     MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación de autorización.");
                 }
@@ -104,7 +105,8 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
         {
             try
             {
-                if (!EnvioCorreo.Plantilla6(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio, solicitud.riesgosDestacados))
+                if (!EnvioCorreo.Plantilla6(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio
+                    , solicitud.riesgosDestacados,int.Parse(lblIdSolicitud.Text)))
                 {
                     MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación rechazo.");
                 }

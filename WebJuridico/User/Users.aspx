@@ -86,6 +86,7 @@
     <div>LISTA DE USUARIOS</div>
 
     <asp:GridView ID="grvUsuarios" runat="server"
+        OnRowDataBound="grvUsuarios_RowDataBound"
         CellPadding="4" 
         ForeColor="#333333" 
         GridLines="None"
@@ -103,7 +104,7 @@
         OnRowDeleting="grvUsuarios_RowDeleting" 
         AllowPaging="True" 
         AllowSorting="True" 
-        OnSorting="grvUsuarios_Sorting">
+        OnSorting="grvUsuarios_Sorting" >
         <AlternatingRowStyle BackColor="White" />
         <Columns>
 
@@ -131,11 +132,23 @@
                 </ItemTemplate>
             </asp:TemplateField>
 
+            
+            
+
             <asp:BoundField DataField="NEmpleado" SortExpression="NEmpleado" HeaderText="No EMPLEADO" ItemStyle-HorizontalAlign="Center" />
             <asp:ButtonField ButtonType="link" CommandName="Nombre" DataTextField="Nombre" HeaderText="NOMBRE DEL EMPLEADO" SortExpression="Nombre" ItemStyle-HorizontalAlign="Left" />
             <asp:BoundField DataField="PerfilDesc" SortExpression="PerfilDesc" HeaderText="TIPO DE USUARIO" />
             <asp:BoundField Visible="false" DataField="PerfilId" SortExpression="PerfilId" />
+
+            <asp:TemplateField HeaderText="CAMBIO" >
+                <ItemTemplate>
+                    <asp:DropDownList runat="server" ID="ddl_perfil" OnSelectedIndexChanged="ddl_perfil_SelectedIndexChanged" AutoPostBack="true" ></asp:DropDownList>
+                </ItemTemplate>
+            </asp:TemplateField>
+
             <asp:CommandField ShowDeleteButton="true" />
+
+            
         </Columns>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#D52B1E" Font-Bold="True" ForeColor="Black" />

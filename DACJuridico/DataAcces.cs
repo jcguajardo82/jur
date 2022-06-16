@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -726,6 +727,27 @@ namespace DACJuridico
             }
         }
 
+
+        public void sp_cambiaPerfilUsuario_pUP(int usuario, int perfil)
+        {
+            using (SqlConnection connection = new SqlConnection(this.conStr))
+            {
+                SqlCommand sqlCommand = new SqlCommand(nameof(sp_cambiaPerfilUsuario_pUP), connection);
+                SqlParameterCollection parameters1 = sqlCommand.Parameters;
+                SqlParameter sqlParameter1 = new SqlParameter("idUsuario", (object)usuario);
+                sqlParameter1.DbType = DbType.Int32;
+                parameters1.Add(sqlParameter1);
+                SqlParameterCollection parameters2 = sqlCommand.Parameters;
+                SqlParameter sqlParameter2 = new SqlParameter("idPerfil", (object)perfil);
+                sqlParameter2.DbType = DbType.Int32;
+                parameters2.Add(sqlParameter2);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                List<tbl_nperfil> tblNperfilList = new List<tbl_nperfil>();
+                connection.Open();
+                sqlCommand.ExecuteReader();
+                connection.Close();
+            }
+        }
         #endregion
 
         #region Plantillas
@@ -4774,6 +4796,60 @@ namespace DACJuridico
                 }
             }
         }
+
+        public string GetCorreoSolicitud_sUp(int @id_Solicitud)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                string item = string.Empty;
+
+                comm = new SqlCommand("GetCorreoSolicitud_sUp", con);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@id_Solicitud", @id_Solicitud) { DbType = System.Data.DbType.Int32 });
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                 
+                        item= (string)reader["email"];
+                      
+                        //item.Descripcion = (string)reader["Descripcion"];                      
+                    }
+
+                    con.Close();
+
+                    return item;
+                }
+                catch
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+
         #endregion
 
     }

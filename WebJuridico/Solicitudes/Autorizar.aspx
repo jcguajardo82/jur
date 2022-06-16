@@ -19,6 +19,16 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Contenido" runat="server">
 
     <asp:ScriptManager runat="server" ID="scrMan"></asp:ScriptManager>
+    
+    <asp:Panel ID="PanelBotonesPrincipales" runat="server">
+        <div style="padding: 15px; text-align: left; width: 93%">
+            <asp:TextBox runat="server" ID="txtBusquedaFolio" placeholder="Folio" CssClass="textboxGeneral"></asp:TextBox>
+            <asp:TextBox runat="server" ID="txtBusquedaNombre" placeholder="Nombre Solicitador" CssClass="textboxGeneral"></asp:TextBox>
+            <asp:Button CssClass="Button" runat="server" Width="130" ID="btnBuscar" Text="Buscar" OnClick="btnBuscar_Click" />
+            <asp:Button CssClass="Button" runat="server" Width="130" ID="btnRefrescar" Text="Todos" OnClick="btnRefrescar_Click" />
+            <br />
+        </div>
+    </asp:Panel>
     <asp:UpdatePanel runat="server" ID="updMain" UpdateMode="Conditional">
         <ContentTemplate>
             <div style="height: 20px"></div>

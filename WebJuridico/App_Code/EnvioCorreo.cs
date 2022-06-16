@@ -25,7 +25,7 @@ public static class EnvioCorreo
         log = " ServicePointManager.Expect100Continue = true; <br>";
 
         ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
-        log =log + " ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072; <br>";
+        log = log + " ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072; <br>";
         Uri apiUrl = new Uri("https://sorianajuridicosendmailqa.azurewebsites.net/api/Sendmail/");
 
         string inputJson = (new JavaScriptSerializer()).Serialize(correo);
@@ -55,6 +55,8 @@ public static class EnvioCorreo
         {
 
             DataAcces obj = new DataAcces();
+            
+
 
             Entidades.tbl_PlantillasCorreo plantilla = obj.GetPlantillaCorreo(7);
             CustomMailMessageDto correo = new CustomMailMessageDto
@@ -70,8 +72,10 @@ public static class EnvioCorreo
 
             correo.MailTo = MailTo;
 
+            //envio correo al area
             EnviarCorreo(correo);
 
+        
 
             success = true;
         }
@@ -90,7 +94,7 @@ public static class EnvioCorreo
     /// <param name="folio"></param>
     /// <param name="senderMail"></param>
     /// <returns></returns>
-    public static bool Plantilla6(string MailTo, string folio, string senderMail, string detalle1, string detalle2, string detalle3)
+    public static bool Plantilla6(string MailTo, string folio, string senderMail, string detalle1, string detalle2, string detalle3,int idSolicitud)
     {
         bool success = false;
         try
@@ -116,7 +120,7 @@ public static class EnvioCorreo
 
             EnviarCorreo(correo);
 
-
+            ObtieneCorreoSolicitud(idSolicitud, correo);
             success = true;
         }
         catch (Exception)
@@ -135,7 +139,7 @@ public static class EnvioCorreo
     /// <param name="folio"></param>
     /// <param name="senderMail"></param>
     /// <returns></returns>
-    public static bool Plantilla5(string MailTo, string folio, string senderMail, string detalle1, string detalle2, string detalle3)
+    public static bool Plantilla5(string MailTo, string folio, string senderMail, string detalle1, string detalle2, string detalle3,int idSolicitud)
     {
         bool success = false;
         try
@@ -161,7 +165,7 @@ public static class EnvioCorreo
 
             EnviarCorreo(correo);
 
-
+            ObtieneCorreoSolicitud(idSolicitud, correo);
             success = true;
         }
         catch (Exception)
@@ -270,4 +274,13 @@ public static class EnvioCorreo
         return result;
 
     }
+
+    private static void ObtieneCorreoSolicitud(int idSolicitud, CustomMailMessageDto correo)
+    {
+        DataAcces obj = new DataAcces();
+      
+        correo.MailTo = obj.GetCorreoSolicitud_sUp(idSolicitud);
+        EnviarCorreo(correo);
+    }
+
 }

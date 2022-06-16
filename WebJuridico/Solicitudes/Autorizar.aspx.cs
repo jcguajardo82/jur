@@ -201,4 +201,48 @@ public partial class Solicitudes_Autorizar : PaginaBase
     #endregion
 
 
+
+    protected void btnBuscar_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            string folio = txtBusquedaFolio.Text.ToLower();
+            string nombre = txtBusquedaNombre.Text.ToLower();
+
+            if (folio.Trim().Length == 0 & nombre.Trim().Length == 0)
+            {
+                return;
+            }
+            int idUsuario = ToInt32_0(Session["idUsuario"]);
+            int id_nperfil = ToInt32_0(Session["Perfil"]);
+            var list = new List<Solicitud>();
+
+             list = (DataAcces.GetSolicitudesAutorizablesPorUsuario(idUsuario, id_nperfil));
+            if (folio.Trim().Length != 0) {
+
+                list = list.Where(x => x.Folio.ToLower().Contains(folio)).ToList();
+            }
+
+            if (nombre.Trim().Length != 0)
+            {
+
+                list = list.Where(x => x.Solicitante.ToLower().Contains(nombre)).ToList();
+            }
+
+            var dt = ConvertToDataTable(list);
+            Session["DTGridSolicitudesAut"] = dt;
+            grvSolicitudes.DataSource = dt;
+            grvSolicitudes.DataBind();
+            //grvSolicitudes.SelectedIndex = -1;
+        }
+        catch (Exception)
+        {
+            MostrarMensaje("Ha ocurrido un error al obtener solicitudes para autorizar.");
+        }
+    }
+
+    protected void btnRefrescar_Click(object sender, EventArgs e)
+    {
+        CargarGridSolicitudes(true);
+    }
 }
