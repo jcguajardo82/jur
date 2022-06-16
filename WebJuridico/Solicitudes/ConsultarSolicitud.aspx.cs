@@ -313,7 +313,35 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
         {
             if (action == 1) //modificar
             {
-                MostrarMensaje("La operación fue exitosa. Consulta en tu opción del módulo \"<a href=\"/Solicitudes/Consultar.aspx\">Mis Solicitudes</a>\" para darle el seguimiento correspondiente");
+                try
+                {
+
+
+                    var lst = DataAcces.tbl_CorreosReenvioVoBoRetro_sUp(solicitudId);
+                    if (lst.Count > 0)
+                    {
+                        var correos = new List<string>();
+                        string folioCompleto = string.Empty;
+                        string detalle = string.Empty;
+                        foreach (var item in lst)
+                        {
+                            correos.Add(item.correo);
+                            folioCompleto = item.FolioCompleto;
+                            detalle = item.Detalle;
+                        }
+
+                        EnvioCorreo.Plantilla4(correos, folioCompleto, Session["email"].ToString(), detalle);
+                    }
+
+                    MostrarMensaje("La operación fue exitosa. Consulta en tu opción del módulo \"<a href=\"/Solicitudes/Consultar.aspx\">Mis Solicitudes</a>\" para darle el seguimiento correspondiente");
+
+                }
+                catch (Exception)
+                {
+
+                    MostrarMensaje("La operación fue exitosa.Error al mandar correos de notificación. Consulta en tu opción del módulo \"<a href=\"/Solicitudes/Consultar.aspx\">Mis Solicitudes</a>\" para darle el seguimiento correspondiente");
+
+                }
             }
 
             if (action == 2) //complementar
@@ -708,14 +736,14 @@ public partial class Solicitudes_ConsultarSolicitud : PaginaBase
 
     private void CargarGridDocumentos(int solicitudId)
     {
-        ConsultaSolicitud sol;
+        //ConsultaSolicitud sol;
 
-        sol = DataAcces.llenadoConsultaSolicitud(solicitudId);
+        //sol = DataAcces.llenadoConsultaSolicitud(solicitudId);
 
-        Session["archivos"] = sol.Archivos;
+        //Session["archivos"] = sol.Archivos;
 
-        grvDocumentos.DataSource = sol.Archivos;
-        grvDocumentos.DataBind();
+        //grvDocumentos.DataSource = sol.Archivos;
+        //grvDocumentos.DataBind();
     }
 
     #endregion

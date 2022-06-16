@@ -1378,7 +1378,7 @@ namespace DACJuridico
 
                     return plantilla;
                 }
-                catch
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -4298,7 +4298,7 @@ namespace DACJuridico
                         {
                             Id_PlantillaJuridica = (int)reader["Id_PlantillaJuridica"],
                             Nombre = (string)reader["Nombre"],
-                           
+
                             voBo = (bool)reader["voBo"]
 
                         });
@@ -4818,9 +4818,9 @@ namespace DACJuridico
 
                     while (reader.Read())
                     {
-                 
-                        item= (string)reader["email"];
-                      
+
+                        item = (string)reader["email"];
+
                         //item.Descripcion = (string)reader["Descripcion"];                      
                     }
 
@@ -4849,6 +4849,66 @@ namespace DACJuridico
                 }
             }
         }
+
+
+        public List<SolicitudRetro> tbl_CorreosReenvioVoBoRetro_sUp(int @id_Solicitud)
+        {
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                SqlCommand comm;
+                SqlDataReader reader;
+                List<SolicitudRetro> items = new List<SolicitudRetro>();
+
+                comm = new SqlCommand("tbl_CorreosReenvioVoBoRetro_sUp", con);
+                comm.CommandType = System.Data.CommandType.StoredProcedure;
+                comm.Parameters.Add(new SqlParameter("@idSolicitud", @id_Solicitud) { DbType = System.Data.DbType.Int32 });
+                reader = null;
+
+
+                try
+                {
+                    con.Open();
+                    reader = comm.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+
+                        var item = new SolicitudRetro();
+
+                        item.correo = (string)reader["correo"];
+                        item.FolioCompleto = (string)reader["FolioCompleto"];
+                        item.Detalle = (string)reader["comentarios"];
+
+                        items.Add(item);
+                        //item.Descripcion = (string)reader["Descripcion"];                      
+                    }
+
+                    con.Close();
+
+                    return items;
+                }
+                catch
+                {
+                    return null;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+                    if (comm != null)
+                    {
+                        comm.Dispose();
+                    }
+                    if (reader != null)
+                    {
+                        reader.Dispose();
+                    }
+                }
+            }
+        }
+
 
         #endregion
 
