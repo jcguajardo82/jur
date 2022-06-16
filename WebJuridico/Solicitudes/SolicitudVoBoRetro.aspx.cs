@@ -80,7 +80,8 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
             Id_voBoSolRetro = int.Parse(ddlCorreos.SelectedValue),
             comentariosNegocio = txtComentarios.Text,
             riesgosDestacados = txtRiesgos.Text,
-            autorizado = aut
+            autorizado = aut,
+            correo= ddlCorreos.SelectedItem.Text
         };
 
         DataAcces.tbl_VoBoSolicitudesRetro_uUp(solicitud);
