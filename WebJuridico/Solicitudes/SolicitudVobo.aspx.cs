@@ -63,9 +63,19 @@ public partial class Solicitudes_SolicitudVobo : PaginaBase
             int totalCorreos = 0;
             List<string> correos = new List<string>();
 
+
+
+
             if (hddIdSol.Value == "0")
             {
                 MostrarMensaje("Debe ingresar un folio de solicitud valido.");
+                txtBusqueda.Focus();
+                return;
+            }
+
+
+            if (DataAcces.ValidaSolicitudVoboPlantilla_sUp(int.Parse(hddIdSol.Value)) != "0") {
+                MostrarMensaje("La solicitud ingresada, ya cuenta con un flujo de Vo.Bo. alterno activo.");
                 txtBusqueda.Focus();
                 return;
             }
