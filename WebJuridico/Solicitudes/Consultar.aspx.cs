@@ -75,8 +75,25 @@ public partial class Solicitudes_Consultar : PaginaBase
         {
             int solicitudId = Convert.ToInt32(e.CommandArgument);
 
-            //Redirigir a Solicitudes2.aspx para visualizar Solicitud
-            Response.Redirect("~/Solicitudes/ConsultarSolicitud.aspx?id=" + solicitudId.ToString());
+            GridViewRow gvr = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+            //Determine the RowIndex of the Row whose Button was clicked.
+            int rowIndex = Convert.ToInt32(gvr.RowIndex);
+
+            //Reference the GridView Row.
+            GridViewRow row = grvSolicitudes.Rows[rowIndex];
+
+            //Fetch value of Name.
+            var estatusPrev = grvSolicitudes.Rows[rowIndex].Cells[8].Text;
+
+            if (estatusPrev.Equals("Rechazado"))
+            {
+                Response.Redirect("~/Solicitudes/ConsultarSolicitud.aspx?action=1&id=" + solicitudId.ToString());
+            }
+            else
+            {
+                //Redirigir a Solicitudes2.aspx para visualizar Solicitud
+                Response.Redirect("~/Solicitudes/ConsultarSolicitud.aspx?id=" + solicitudId.ToString());
+            }
         }
 
         if (e.CommandName == "Complementar")
@@ -91,9 +108,9 @@ public partial class Solicitudes_Consultar : PaginaBase
         {
             int solicitudId = Convert.ToInt32(e.CommandArgument);
             var mail = ((LinkButton)e.CommandSource).Text;
-            
 
-            Response.Redirect("~/Solicitudes/SolicitudVoBoRetro.aspx?id=" + solicitudId.ToString() + "&correo="+mail);
+
+            Response.Redirect("~/Solicitudes/SolicitudVoBoRetro.aspx?id=" + solicitudId.ToString() + "&correo=" + mail);
         }
     }
 
