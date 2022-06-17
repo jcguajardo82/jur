@@ -109,6 +109,7 @@ public static class EnvioCorreo
                 Subject = plantilla.Subject.Replace("@folio", folio),
                 HmlContent = plantilla.Body.Replace("@folio", folio)
             };
+            correo.HmlContent = correo.HmlContent.Replace("@area", MailTo);
             correo.HmlContent = correo.HmlContent.Replace("@detalle1", detalle1.Replace(Environment.NewLine, "<br />"));
             correo.HmlContent = correo.HmlContent.Replace("@detalle2", detalle2.Replace(Environment.NewLine, "<br />"));
             correo.HmlContent = correo.HmlContent.Replace("@detalle3", detalle3.Replace(Environment.NewLine, "<br />"));
@@ -154,6 +155,8 @@ public static class EnvioCorreo
                 Subject = plantilla.Subject.Replace("@folio", folio),
                 HmlContent = plantilla.Body.Replace("@folio", folio)
             };
+
+            correo.HmlContent = correo.HmlContent.Replace("@area", MailTo);
             correo.HmlContent = correo.HmlContent.Replace("@detalle1", detalle1.Replace(Environment.NewLine, "<br />"));
             correo.HmlContent = correo.HmlContent.Replace("@detalle2", detalle2.Replace(Environment.NewLine, "<br />"));
             correo.HmlContent = correo.HmlContent.Replace("@detalle3", detalle3.Replace(Environment.NewLine, "<br />"));
