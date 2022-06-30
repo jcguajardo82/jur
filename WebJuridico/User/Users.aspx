@@ -138,6 +138,7 @@
             <asp:BoundField DataField="NEmpleado" SortExpression="NEmpleado" HeaderText="No EMPLEADO" ItemStyle-HorizontalAlign="Center" />
             <asp:ButtonField ButtonType="link" CommandName="Nombre" DataTextField="Nombre" HeaderText="NOMBRE DEL EMPLEADO" SortExpression="Nombre" ItemStyle-HorizontalAlign="Left" />
             <asp:BoundField DataField="PerfilDesc" SortExpression="PerfilDesc" HeaderText="TIPO DE USUARIO" />
+                        <asp:BoundField DataField="Email" SortExpression="Email" HeaderText="Email" />
             <asp:BoundField Visible="false" DataField="PerfilId" SortExpression="PerfilId" />
 
             <asp:TemplateField HeaderText="CAMBIO" >
