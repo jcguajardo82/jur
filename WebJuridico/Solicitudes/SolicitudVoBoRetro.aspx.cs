@@ -38,13 +38,29 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
         {
             iniciaControles();
 
-            CargarDDLCorreos(solicitudId);
 
             if (!string.IsNullOrEmpty(correo))
             {
-                ddlCorreos.SelectedValue = ddlCorreos.Items.FindByText(correo).Value;
+                CargarDDLCorreos(solicitudId, correo);
+                var si = ddlCorreos.Items.FindByText(correo);
+                if (si != null)
+                {
+                    ddlCorreos.SelectedValue = ddlCorreos.Items.FindByText(correo).Value;
+                    ddlCorreos_SelectedIndexChanged(this, null);
+                    btnAutorizar.Visible = true;
+                    btnRechazar.Visible = true;
+                }
+                else
+                {
+                    btnAutorizar.Visible = false;
+                    btnRechazar.Visible = false;
+                }
 
-                ddlCorreos_SelectedIndexChanged(this, null);
+
+            }
+            else
+            {
+                CargarDDLCorreos(solicitudId, "");
             }
         }
     }
@@ -81,7 +97,7 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
             comentariosNegocio = txtComentarios.Text,
             riesgosDestacados = txtRiesgos.Text,
             autorizado = aut,
-            correo= ddlCorreos.SelectedItem.Text
+            correo = ddlCorreos.SelectedItem.Text
         };
 
         DataAcces.tbl_VoBoSolicitudesRetro_uUp(solicitud);
@@ -91,7 +107,7 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
             try
             {
                 if (!EnvioCorreo.Plantilla5(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio
-                    , solicitud.riesgosDestacados,int.Parse(lblIdSolicitud.Text)))
+                    , solicitud.riesgosDestacados, int.Parse(lblIdSolicitud.Text)))
                 {
                     MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación de autorización.");
                 }
@@ -107,7 +123,7 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
             try
             {
                 if (!EnvioCorreo.Plantilla6(solicitud.correo, lblFolio.Text, Session["email"].ToString(), txtDesc.Text, solicitud.comentariosNegocio
-                    , solicitud.riesgosDestacados,int.Parse(lblIdSolicitud.Text)))
+                    , solicitud.riesgosDestacados, int.Parse(lblIdSolicitud.Text)))
                 {
                     MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación rechazo.");
                 }
@@ -117,7 +133,7 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
 
                 MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación de rechazo.");
             }
-           
+
         }
 
 
@@ -125,7 +141,8 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
         {
             try
             {
-                if (!EnvioCorreo.Plantilla7(Session["email"].ToString(), lblFolio.Text, Session["email"].ToString())) {
+                if (!EnvioCorreo.Plantilla7(Session["email"].ToString(), lblFolio.Text, Session["email"].ToString()))
+                {
                     MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación de autorización total.");
                 }
             }
@@ -134,7 +151,7 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
 
                 MostrarMensaje("Operación realizada con éxito. No se ha podido mandar el  correo de notificación de autorización total.");
             }
-            
+
         }
 
 
@@ -185,9 +202,19 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
     }
 
     #region Metodos
-    private void CargarDDLCorreos(int Id_voBoSol)
+    private void CargarDDLCorreos(int Id_voBoSol, string correo)
     {
-        ddlCorreos.DataSource = DataAcces.tbl_VoBoSolicitudesRetro_sUp(Id_voBoSol);
+
+        List<tbl_VoBoSolicitudesRetro> lst = new List<tbl_VoBoSolicitudesRetro>();
+
+        if (!string.IsNullOrEmpty(correo))
+        {
+            lst = lst.Where(x => x.correo == correo).ToList();
+
+
+        }
+
+        ddlCorreos.DataSource = lst;
         ddlCorreos.DataTextField = "correo";
         ddlCorreos.DataValueField = "Id_voBoSolRetro";
         ddlCorreos.DataBind();
