@@ -5,11 +5,11 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Contenido" runat="server">
 
-<div style="text-align: center; padding: 17px">
-    <asp:Label ID="pageTitle" runat="server" Text="ADMINISTRACION DE USUARIOS" Font-Bold="True" Font-Names="Tahoma" Font-Size="X-Large"></asp:Label>
-</div>
+    <div style="text-align: center; padding: 17px">
+        <asp:Label ID="pageTitle" runat="server" Text="ADMINISTRACION DE USUARIOS" Font-Bold="True" Font-Names="Tahoma" Font-Size="X-Large"></asp:Label>
+    </div>
 
-<center>
+    <center>
     <table>
         <tr>
             <td style="text-align: right; background-color: #D52B1E; font-size: 13px;">
@@ -56,20 +56,20 @@
                 <asp:Button ID="BtnLimpiar" runat="server" Text="Limpiar" Width="90px" OnClick="BtnLimpiar_Click" />
             </td>
         </tr>
-<%--        <tr>
+        <tr>
             <td style="text-align: right; background-color: #D52B1E; font-size: 13px;">
                 <asp:Label ID="Label4" runat="server" Text="Email de Empleado:"></asp:Label>
             </td>
-            <td>--%>
-                <asp:TextBox ID="TxtEmailEmpleado" runat="server" Width="310px" Visible="false"></asp:TextBox>
-         <%--   </td>
             <td>
-
+                <asp:TextBox ID="TxtEmailEmpleado" runat="server" Width="310px" Visible="true"></asp:TextBox>
             </td>
             <td>
 
             </td>
-        </tr>--%>
+            <td>
+
+            </td>
+        </tr>
     </table>
 
 
@@ -80,8 +80,8 @@
 </center>
 
     <hr width="100%" align="center" color="B6BF00">
-            
-<center>
+
+    <center>
 
     <div>LISTA DE USUARIOS</div>
 
@@ -138,7 +138,12 @@
             <asp:BoundField DataField="NEmpleado" SortExpression="NEmpleado" HeaderText="No EMPLEADO" ItemStyle-HorizontalAlign="Center" />
             <asp:ButtonField ButtonType="link" CommandName="Nombre" DataTextField="Nombre" HeaderText="NOMBRE DEL EMPLEADO" SortExpression="Nombre" ItemStyle-HorizontalAlign="Left" />
             <asp:BoundField DataField="PerfilDesc" SortExpression="PerfilDesc" HeaderText="TIPO DE USUARIO" />
-                        <asp:BoundField DataField="Email" SortExpression="Email" HeaderText="Email" />
+                        <%--<asp:BoundField DataField="Email" SortExpression="Email" HeaderText="Email" />--%>
+             <asp:TemplateField ControlStyle-Width="215px">
+                <ItemTemplate>
+                    <asp:TextBox runat="server"  Text='<%# Eval("Email") %>'  OnTextChanged="txtEmail_TextChanged" AutoPostBack="true" ID="txtEmail" MaxLength="70" ></asp:TextBox>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField Visible="false" DataField="PerfilId" SortExpression="PerfilId" />
 
             <asp:TemplateField HeaderText="CAMBIO" >

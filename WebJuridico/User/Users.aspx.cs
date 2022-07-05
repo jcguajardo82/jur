@@ -461,4 +461,27 @@ public partial class User_Users : PaginaBase
         Session["UsuariosGridData"] = null;
         CargarGrid();
     }
+
+    protected void txtEmail_TextChanged(object sender, EventArgs e)
+    {
+
+        try
+        {
+
+      
+        TextBox tb = (TextBox)sender;
+        GridViewRow gvr = (GridViewRow)tb.Parent.Parent;
+        int rowindex = gvr.RowIndex;
+        var mail = tb.Text;
+        var idUsuario = ((Label)grvUsuarios.Rows[rowindex].FindControl("lblIdUsuario")).Text;
+
+        DataAcces.ActualizaCorreo_uPd(int.Parse(idUsuario),mail);
+
+        }
+        catch (Exception ex)
+        {
+
+            MostrarMensaje("Error al actualizar el correo. .- "+ex.Message);
+        }
+    }
 }
