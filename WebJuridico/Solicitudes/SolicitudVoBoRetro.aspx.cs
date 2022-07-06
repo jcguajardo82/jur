@@ -207,8 +207,12 @@ public partial class Solicitudes_SolicitudVoBoRetro : PaginaBase
 
         List<tbl_VoBoSolicitudesRetro> lst = new List<tbl_VoBoSolicitudesRetro>();
 
+        lst = DataAcces.tbl_VoBoSolicitudesRetro_sUp(Id_voBoSol);
+
         if (!string.IsNullOrEmpty(correo))
         {
+          
+
             lst = lst.Where(x => x.correo == correo).ToList();
 
 
