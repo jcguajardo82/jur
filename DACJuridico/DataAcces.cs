@@ -748,6 +748,48 @@ namespace DACJuridico
                 connection.Close();
             }
         }
+
+        public int  ActualizaCorreo_uPd(int idUsuario,string email) {
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                SqlCommand cmd;
+
+                cmd = new SqlCommand("ActualizaCorreo_uPd", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("@idUsuario", idUsuario) { DbType = System.Data.DbType.Int32 });
+                cmd.Parameters.Add(new SqlParameter("@email", email) { DbType = System.Data.DbType.String });
+          
+
+
+                try
+                {
+                    conn.Open();
+
+                    int verificator = 0;
+                    verificator = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    conn.Close();
+
+                    return verificator;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+                finally
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Dispose();
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Plantillas
